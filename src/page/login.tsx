@@ -23,7 +23,7 @@ export default function Login() {
               <p className="font-extralight ml-10 mr-10">
                 Enter your personal details and start journey with us
               </p>
-              <Link to="/register">
+              <Link to="/register" className="ml-auto mr-auto">
                 <Button value="REGISTER" variant="round-blue-transparent" />
               </Link>
             </div>

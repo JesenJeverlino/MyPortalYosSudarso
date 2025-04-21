@@ -12,7 +12,7 @@ export default function Register() {
               className="w-[70px] h-auto rounded-[10px]"
             />
             <h1 className="text-white text-4xl mt-5">REGISTER FORM</h1>
-            <Link to="/">
+            <Link to="/"  className="mb-auto">
               <Button value="Back" variant="square-blue"></Button>
             </Link>
           </div>
