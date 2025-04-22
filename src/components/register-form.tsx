@@ -91,7 +91,7 @@ export default function RegisterForm() {
         />
         <br></br>
         <div className="block flex flex-row-reverse mb-10">
-          <Link to="/" className="mb-[40px]">
+          <Link to="/user-dashboard" className="mb-[40px]">
             <Button value="OK" variant="square-blue"></Button>
           </Link>
         </div>
