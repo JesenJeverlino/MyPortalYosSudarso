@@ -14,11 +14,11 @@ export default function Sidebar() {
         <div className="flex flex-col items-center mb-8">
           <img
             src="pp-draft.jpg"
-            className="w-[60%] h-auto rounded-full mb-3"
+            className="w-[50%] h-auto rounded-full mb-3"
           />
-          <h1 className="text-xl font-light">John Doe</h1>
+          <h1 className="text-lg font-light">John Doe</h1>
         </div>
-        <nav className="flex flex-col gap-4 text-lg w-[95%] ml-3">
+        <nav className="flex flex-col gap-4 text-base w-[95%] ml-3">
           <NavLink
             to="/user-dashboard"
             className={({ isActive }) =>
@@ -29,7 +29,7 @@ export default function Sidebar() {
           >
             <Icon
               icon="material-symbols:dashboard"
-              className="w-[24px] h-[24px] mr-2"
+              className="w-[20px] h-[20px] mr-2"
             />
             Dashboard
           </NavLink>
