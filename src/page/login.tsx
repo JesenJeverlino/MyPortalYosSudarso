@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import Button from "@/components/button";
-import LoginForm from "@/components/login-form";
+import { Link } from "react-router-dom"
+import Button from "@/components/button"
+import LoginForm from "@/components/login-form"
 
 export default function Login() {
   return (

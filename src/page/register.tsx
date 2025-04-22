@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import Button from "@/components/button";
-import RegistermForm from '@/components/register-form';
+import { Link } from "react-router-dom"
+import Button from "@/components/button"
+import RegistermForm from '@/components/register-form'
 
 export default function Register() {
   return (
