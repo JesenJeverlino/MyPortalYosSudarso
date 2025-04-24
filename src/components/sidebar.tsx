@@ -8,7 +8,7 @@ export default function Sidebar() {
         <div className="flex mb-12 p-2">
           <img src="logo-yos-sudarso.jpeg" className="w-[40px] h-auto mr-2" />
           <h1 className="font-semibold">
-            MYPORTAL <br></br> SMAK YOS SUDARSO
+            MYPORTAL <br />SMAK YOS SUDARSO
           </h1>
         </div>
         <div className="flex flex-col items-center mb-8">
