@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 export default function Sidebar() {
-  const keAdmin = true;
+  const keAdmin = false;
 
   return (
     <>
