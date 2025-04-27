@@ -1,14 +1,17 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 export default function Sidebar() {
+  const keAdmin = true;
+
   return (
     <>
       <aside className="w-68 bg-[#1952a6] text-white flex flex-col p-2">
         <div className="flex mb-12 p-2">
           <img src="logo-yos-sudarso.jpeg" className="w-[40px] h-auto mr-2" />
           <h1 className="font-semibold">
-            MYPORTAL <br />SMAK YOS SUDARSO
+            MYPORTAL <br />
+            SMAK YOS SUDARSO
           </h1>
         </div>
         <div className="flex flex-col items-center mb-8">
@@ -20,10 +23,10 @@ export default function Sidebar() {
         </div>
         <nav className="flex flex-col gap-4 text-base w-[95%] ml-3">
           <NavLink
-            to="/user-dashboard"
+            to={keAdmin ? "/admin-dashboard" : "/user-dashboard"}
             className={({ isActive }) =>
               `flex items-center p-3 rounded-lg text-white ${
-                isActive ? 'bg-[#BED8FF]/40' : 'hover:bg-[#BED8FF]/40'
+                isActive ? "bg-[#BED8FF]/40" : "hover:bg-[#BED8FF]/40"
               }`
             }
           >
@@ -34,10 +37,10 @@ export default function Sidebar() {
             Dashboard
           </NavLink>
           <NavLink
-            to="/user-student-data"
+            to={keAdmin ? "/admin-student-data" : "/user-student-data"}
             className={({ isActive }) =>
               `flex items-center p-3 rounded-lg text-white ${
-                isActive ? 'bg-[#BED8FF]/40' : 'hover:bg-[#BED8FF]/40'
+                isActive ? "bg-[#BED8FF]/40" : "hover:bg-[#BED8FF]/40"
               }`
             }
           >
@@ -45,35 +48,51 @@ export default function Sidebar() {
             Student Data
           </NavLink>
           <NavLink
-            to="/user-class-and-schedule"
+            to={
+              keAdmin ? "/admin-class-management" : "/user-class-and-schedule"
+            }
             className={({ isActive }) =>
               `flex items-center p-3 rounded-lg text-white ${
-                isActive ? 'bg-[#BED8FF]/40' : 'hover:bg-[#BED8FF]/40'
+                isActive ? "bg-[#BED8FF]/40" : "hover:bg-[#BED8FF]/40"
               }`
             }
           >
-            <Icon
-              icon="mdi:calendar-outline"
-              className="w-[24px] h-[24px] mr-2"
-            />
-            Classes & Schedule
+            {keAdmin ? (
+              <Icon
+                icon="solar:book-linear"
+                className="w-[24px] h-[24px] mr-2"
+              />
+            ) : (
+              <Icon
+                icon="mdi:calendar-outline"
+                className="w-[24px] h-[24px] mr-2"
+              />
+            )}
+            {keAdmin ? "Class Management" : "Classes & Schedule"}
           </NavLink>
           <NavLink
-            to="/user-study-plan"
+            to={keAdmin ? "/admin-account-settings" : "/user-study-plan"}
             className={({ isActive }) =>
               `flex items-center p-3 rounded-lg text-white ${
-                isActive ? 'bg-[#BED8FF]/40' : 'hover:bg-[#BED8FF]/40'
+                isActive ? "bg-[#BED8FF]/40" : "hover:bg-[#BED8FF]/40"
               }`
             }
           >
-            <Icon icon="solar:book-linear" className="w-[24px] h-[24px] mr-2" />
-            Study Plan
+            {keAdmin ? (
+              <Icon icon="bi:gear-fill" className="w-[24px] h-[24px] mr-2" />
+            ) : (
+              <Icon
+                icon="solar:book-linear"
+                className="w-[24px] h-[24px] mr-2"
+              />
+            )}
+            {keAdmin ? "Account Settings" : "Study Plan"}
           </NavLink>
           <NavLink
             to="/"
             className={({ isActive }) =>
               `flex items-center p-3 rounded-lg text-white ${
-                isActive ? 'bg-[#BED8FF]/40' : 'hover:bg-[#BED8FF]/40'
+                isActive ? "bg-[#BED8FF]/40" : "hover:bg-[#BED8FF]/40"
               }`
             }
           >
