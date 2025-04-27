@@ -9,7 +9,7 @@ export default function UserClassAndSchedule() {
         img="blush/classandschedule-blush.png"
         value="Stay on track with your class schedule.  📅"
       ></Header>
-      
+
       <ChooseDay></ChooseDay>
       <Table></Table>
     </>

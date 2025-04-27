@@ -1,5 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
+
+// Others
+import ScrollToTop from "@/others/scroll-to-top";
+
 // Login and Register Page
 import AuthLayout from "@/page/auth-layout"
 import Login from "@/page/login-register-page/login"
@@ -25,7 +29,9 @@ export default function App() {
   return (
     <>
       <Router>
+      <ScrollToTop />
         <Routes>
+          
           {/* Login and Register Page */}
           <Route element={<AuthLayout />}>
             <Route path="/" element={<Login />} />

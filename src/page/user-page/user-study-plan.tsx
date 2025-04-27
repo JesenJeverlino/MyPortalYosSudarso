@@ -12,7 +12,7 @@ export default function StudyPlan() {
         img="blush/studyplan-blush.png"
         value="Customize your study plan effortlessly!  📖"
       ></Header>
-      
+
       {HaveStudyPlan ? (
         <>
           <ChooseDay />

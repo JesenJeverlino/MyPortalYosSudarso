@@ -1,5 +1,5 @@
 import Sidebar from "@/components/sidebar";
-import DashboardSectionTwo from "@/components/dashboard-section-2";
+import DashboardSectionTwo from "@/components/dashboard-component/dashboard-quick-acc";
 import AdminDashboardTwo from "@/components/admin-dashboard-section-2";
 
 export default function AdminDashboard() {

@@ -1,7 +1,7 @@
 import Header from "@/components/header";
-import DashboardSectionOne from "@/components/dashboard-section-1";
-import DashboardSectionTwo from "@/components/dashboard-section-2";
-import DashboardSectionThree from "@/components/dashboard-section-3";
+import DashboardStatus from "@/components/dashboard-component/dashboard-status";
+import DashboardQuickAcc from "@/components/dashboard-component/dashboard-quick-acc";
+import DashboardContact from "@/components/dashboard-component/dashboard-contact";
 
 export default function UserDashboard() {
   return (
@@ -10,10 +10,10 @@ export default function UserDashboard() {
         img="blush/dashboard-blush-1.png"
         value="All Your Academic Info in One Place!  ⭐"
       ></Header>
-      
-      <DashboardSectionOne></DashboardSectionOne>
-      <DashboardSectionTwo></DashboardSectionTwo>
-      <DashboardSectionThree></DashboardSectionThree>
+
+      <DashboardStatus></DashboardStatus>
+      <DashboardQuickAcc></DashboardQuickAcc>
+      <DashboardContact></DashboardContact>
     </>
   );
 }
