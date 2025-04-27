@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Login from "@/page/login"
-import Register from "@/page/register"
+
+// Login and Register Page
+import AuthLayout from "@/page/auth-layout"
+import Login from "@/page/login-register-page/login"
+import Register from "@/page/login-register-page/register"
 
 // User Page
 import UserDashboard from "@/page/user-page/user-dashboard"
@@ -9,12 +12,12 @@ import UserClassAndSchedule from "@/page/user-page/user-class-and-schedule"
 import UserStudyPlan from "@/page/user-page/user-study-plan"
 
 // Admin Page
-import AdminDashboard from "./page/admin-page/admin-dashboard"
-import AdminStudentData from "./page/admin-page/admin-student-data"
-import AdminClassManagement from "./page/admin-page/admin-class-management"
-import AdminAccountSettings from "./page/admin-page/admin-account-settings"
+import AdminDashboard from "@/page/admin-page/admin-dashboard"
+import AdminStudentData from "@/page/admin-page/admin-student-data"
+import AdminClassManagement from "@/page/admin-page/admin-class-management"
+import AdminAccountSettings from "@/page/admin-page/admin-account-settings"
 
-import AdminDashboardApproveDetails from "./page/admin-page/admin-dashboard-approve-details"
+import AdminDashboardApproveDetails from "@/page/admin-page/admin-dashboard-approve-details"
 import AdminStudentDataDetail from "@/page/admin-page/admin-student-data-detail"
 
 export default function App() {
@@ -22,14 +25,19 @@ export default function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          {/* Login and Register Page */}
+          <Route element={<AuthLayout />}>
+            <Route path="/" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
 
+          {/* User Page */}
           <Route path="/user-dashboard" element={<UserDashboard />} />
           <Route path="/user-student-data" element={<UserStudentData />} />
           <Route path="/user-class-and-schedule" element={<UserClassAndSchedule />} />
           <Route path="/user-study-plan" element={<UserStudyPlan />} />
 
+          {/* Admin Page */}
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin-student-data" element={<AdminStudentData />} />
           <Route path="/admin-class-management" element={<AdminClassManagement />} />

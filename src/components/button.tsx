@@ -1,6 +1,7 @@
 type ButtonProps = {
     value: string;
     variant: 'round-blue' | 'round-blue-transparent' | 'square-blue' | 'square-yellow';
+
   };
 
 export default function Button({variant,value,}: ButtonProps) {

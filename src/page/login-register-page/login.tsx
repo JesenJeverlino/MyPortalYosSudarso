@@ -1,0 +1,13 @@
+import LoginCardLeft from "@/components/login-component/login-card-left";
+import LoginCardRight from "@/components/login-component/login-card-right";
+
+export default function Login() {
+  return (
+    <>
+      <div className="w-[60%] h-[70%] rounded-[20px] flex overflow-hidden">
+        <LoginCardLeft></LoginCardLeft>
+        <LoginCardRight></LoginCardRight>
+      </div>
+    </>
+  );
+}
