@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 
 // Others
-import ScrollToTop from "@/others/scroll-to-top";
+import ScrollToTop from "@/other/scroll-to-top";
 
 // Login and Register Page
 import AuthLayout from "@/page/auth-layout"

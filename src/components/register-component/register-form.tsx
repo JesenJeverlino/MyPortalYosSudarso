@@ -23,7 +23,7 @@ export default function RegisterForm() {
 
           <div className="flex flex-wrap gap-6 mb-7">
             <div className="flex flex-col w-[18%]">
-              <RegisterDropdownField label="ClassRoom" options={["10-A", "10-B", "10-C"]}></RegisterDropdownField>
+              <RegisterDropdownField label="Grade" options={["10", "11", "12"]}></RegisterDropdownField>
             </div>
             <div className="flex flex-col w-[18%]">
               <RegisterDropdownField label="Gender" options={["Male", "Female"]}></RegisterDropdownField>

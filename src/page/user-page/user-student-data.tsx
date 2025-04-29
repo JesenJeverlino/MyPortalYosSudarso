@@ -1,6 +1,6 @@
 import Header from "@/components/header";
-import StudentDataFormOne from "@/components/student-data-form-1";
-import StudentDataFormTwo from "@/components/student-data-form-2";
+import StudentDataGeneralForm from "@/components/student-data-component/student-data-general-form";
+import StudentDataAuthForm from "@/components/student-data-component/student-data-auth-form";
 
 export default function UserStudentData() {
   return (
@@ -10,9 +10,9 @@ export default function UserStudentData() {
         value="Manage and update your data with ease!  🚀"
       ></Header>
 
-      <StudentDataFormOne></StudentDataFormOne>
+      <StudentDataGeneralForm></StudentDataGeneralForm>
       <hr className="w-[90%] border-3 border-[#1952a6] mt-20" />
-      <StudentDataFormTwo></StudentDataFormTwo>
+      <StudentDataAuthForm></StudentDataAuthForm>
     </>
   );
 }
