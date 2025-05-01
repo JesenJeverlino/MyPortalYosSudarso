@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import Header from "@/components/other-component/header";
 import StudentDataGeneralForm from "@/components/student-data-component/student-data-general-form";
 import StudentDataAuthForm from "@/components/student-data-component/student-data-auth-form";
 

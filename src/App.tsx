@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
-
 // Others
 import ScrollToTop from "@/other/scroll-to-top";
 
@@ -17,13 +16,15 @@ import UserClassAndSchedule from "@/page/user-page/user-class-and-schedule"
 import UserStudyPlan from "@/page/user-page/user-study-plan"
 
 // Admin Page
-// import AdminDashboard from "@/page/admin-page/admin-dashboard"
-// import AdminStudentData from "@/page/admin-page/admin-student-data"
-// import AdminClassManagement from "@/page/admin-page/admin-class-management"
-// import AdminAccountSettings from "@/page/admin-page/admin-account-settings"
+import AdminDashboard from "@/page/admin-page/admin-dashboard"
+import AdminStudentData from "@/page/admin-page/admin-student-data"
+import AdminClassManagement from "@/page/admin-page/admin-class-management"
+import AdminAccountSettings from "@/page/admin-page/admin-account-settings"
+// Admin Sub Pages
+import AdminDashboardPendingDetails from "@/page/admin-page/admin-sub-pages/admin-dashboard-pending-details"
+import AdminStudentDataDetail from "@/page/admin-page/admin-sub-pages/admin-student-data-detail"
 
-// import AdminDashboardApproveDetails from "@/page/admin-page/admin-dashboard-approve-details"
-// import AdminStudentDataDetail from "@/page/admin-page/admin-student-data-detail"
+
 
 export default function App() {
   return (
@@ -38,22 +39,24 @@ export default function App() {
             <Route path="/register" element={<Register />} />
           </Route>
 
-          {/* User Page */}
+
           <Route element={<BasicLayout />}>
+            {/* User Page */}
             <Route path="/user-dashboard" element={<UserDashboard />} />
             <Route path="/user-student-data" element={<UserStudentData />} />
             <Route path="/user-class-and-schedule" element={<UserClassAndSchedule />} />
             <Route path="/user-study-plan" element={<UserStudyPlan />} />
+
+            {/* Admin Page */}
+            <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            <Route path="/admin-student-data" element={<AdminStudentData />} />
+            <Route path="/admin-class-management" element={<AdminClassManagement />} />
+            <Route path="/admin-account-settings" element={<AdminAccountSettings />} />
+
+            <Route path="/admin-dashboard-pending-details" element={<AdminDashboardPendingDetails />} />
+            <Route path="/admin-student-data-detail" element={<AdminStudentDataDetail />} />
           </Route>
 
-          {/* Admin Page */}
-          {/* <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/admin-student-data" element={<AdminStudentData />} />
-          <Route path="/admin-class-management" element={<AdminClassManagement />} />
-          <Route path="/admin-account-settings" element={<AdminAccountSettings />} />
-
-          <Route path="/admin-dashboard-approve-details" element={<AdminDashboardApproveDetails />} />
-          <Route path="/admin-student-data-detail" element={<AdminStudentDataDetail />} /> */}
         </Routes>
       </Router>
     </>

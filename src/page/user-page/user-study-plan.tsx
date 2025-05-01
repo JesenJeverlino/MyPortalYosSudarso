@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import Header from "@/components/other-component/header";
 import ChooseDay from "@/components/other-component/choose-day";
 import Table from "@/components/other-component/table";
 import NoStudyPlan from "@/components/other-component/no-study-plan";

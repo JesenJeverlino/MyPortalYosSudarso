@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import Sidebar from "@/components/sidebar";
-import AdminDashboardStudentData from "@/components/admin-dashboard-student-data";
+import Sidebar from "@/components/other-component/sidebar";
+import AdminDashboardStudentData from "@/components/dashboard-component/dashboard-pending-details";
 import Button from "@/components/other-component/button";
 
-export default function AdminDashboardApproveDetails() {
+export default function AdminStudentDataDetail() {
   return (
     <>
       <div className="flex">
@@ -14,11 +14,12 @@ export default function AdminDashboardApproveDetails() {
             <div className="w-[95%] p-6 border-3 border-[#1952a6] rounded-[30px]">
               <div className="mt-5 w-full flex">
                 <div className="flex space-x-6">
-                  <Button value="Approve" variant="square-blue"></Button>
+                  <Button value="Mark as G" variant="square-blue"></Button>
 
-                  <Button value="Reject" variant="square-blue"></Button>
+                  <Button value="Undo G" variant="square-blue"></Button>
                 </div>
                 <div className="ml-auto">
+                <Button value="Delete B w text" variant="square-blue"></Button>
                   <Link to="/admin-dashboard">
                     <Button value="Back" variant="square-blue"></Button>
                   </Link>

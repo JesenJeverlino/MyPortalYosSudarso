@@ -1,4 +1,4 @@
-import Sidebar from "@/components/sidebar";
+import Sidebar from "@/components/other-component/sidebar";
 
 export default function AdminClassManagement() {
   return (
