@@ -1,15 +1,17 @@
 import TableHead from "@/components/other-component/other-sub-component/table-head";
 import TableBody from "@/components/other-component/other-sub-component/table-body";
+import TableBodyChoose from "@/components/other-component/other-sub-component/table-body-choose";
 
-export default function Table() {
+export default function Table({ canChoose }: { canChoose: boolean }) {
   return (
     <>
       <div className="w-full rounded-[30px] border-3 border-[#1952a6] p-5 pb-0">
         <table className="w-full relative">
-          <TableHead
-            values={["No", "Time", "Subject", "Teacher", "Class"]}
-          ></TableHead>
-          <TableBody
+          <TableHead values={["No", "Time", "Subject", "Teacher", "Class"]}></TableHead>
+          {canChoose ? (
+            <TableBodyChoose></TableBodyChoose>
+          ) : (
+            <TableBody
             values={[
               ["1", "07.00-08.30", "Mathematics", "Budi Santoso", "10-A"],
               ["2", "08.30-09.15", "Chemistry", "Sri Risnawati", "10-A"],
@@ -19,6 +21,7 @@ export default function Table() {
               ["5", "14.30-15.15", "English", "Marlina Suriani", "10-A"],
             ]}
           ></TableBody>
+          )}
         </table>
       </div>
     </>
