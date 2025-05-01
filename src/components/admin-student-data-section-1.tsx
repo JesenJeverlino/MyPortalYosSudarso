@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Button from "./button";
+import Button from "./other-component/button";
 import { Icon } from "@iconify/react";
 
 export default function AdminStudentDataSectionOne() {

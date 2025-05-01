@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Button from "@/components/button";
+import Button from "@/components/other-component/button";
 
 export default function LoginCardLeft() {
   return (

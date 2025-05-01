@@ -20,7 +20,7 @@ export default function Button({variant,value,}: ButtonProps) {
     
   return (
     <>
-      <button className={variantClass}>{value}</button>
+      <button className={`cursor-pointer ${variantClass}`}>{value}</button>
     </>
   );
 }

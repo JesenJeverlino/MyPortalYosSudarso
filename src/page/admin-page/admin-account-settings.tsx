@@ -1,5 +1,5 @@
 import Sidebar from "@/components/sidebar";
-import Button from "@/components/button"
+import Button from "@/components/other-component/button"
 
 export default function AdminAccountSettings() {
   return (

@@ -1,6 +1,6 @@
 import Header from "@/components/header";
-import ChooseDay from "@/components/choose-day";
-import Table from "@/components/table";
+import ChooseDay from "@/components/other-component/choose-day";
+import Table from "@/components/other-component/table";
 
 export default function UserClassAndSchedule() {
   return (
@@ -11,7 +11,11 @@ export default function UserClassAndSchedule() {
       ></Header>
 
       <ChooseDay></ChooseDay>
-      <Table></Table>
+
+      <div className="mt-20 w-[90%]">
+        <h1 className="text-[#1952a6] font-bold text-[1.4rem] mb-3">Monday's Schedule</h1>
+        <Table></Table>
+      </div>
     </>
   );
 }

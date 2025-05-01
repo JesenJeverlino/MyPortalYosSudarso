@@ -1,5 +1,5 @@
 import Header from "@/components/header";
-import ChooseDay from "@/components/choose-day";
+import ChooseDay from "@/components/other-component/choose-day";
 import TableChoose from "@/components/table-choose";
 import NoStudyPlan from "@/components/no-study-plan";
 

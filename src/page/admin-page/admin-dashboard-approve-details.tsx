@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Sidebar from "@/components/sidebar";
 import AdminDashboardStudentData from "@/components/admin-dashboard-student-data";
-import Button from "@/components/button";
+import Button from "@/components/other-component/button";
 
 export default function AdminDashboardApproveDetails() {
   return (
