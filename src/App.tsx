@@ -22,7 +22,8 @@ import AdminClassManagement from "@/page/admin-page/admin-class-management"
 import AdminAccountSettings from "@/page/admin-page/admin-account-settings"
 // Admin Sub Pages
 import AdminDashboardPendingDetails from "@/page/admin-page/admin-sub-pages/admin-dashboard-pending-details"
-import AdminStudentDataDetail from "@/page/admin-page/admin-sub-pages/admin-student-data-detail"
+import AdminStudentDataDetails from "@/page/admin-page/admin-sub-pages/admin-student-data-details"
+import FinalBoss from "./page/admin-page/admin-sub-pages/finalBoss";
 
 
 
@@ -54,7 +55,8 @@ export default function App() {
             <Route path="/admin-account-settings" element={<AdminAccountSettings />} />
 
             <Route path="/admin-dashboard-pending-details" element={<AdminDashboardPendingDetails />} />
-            <Route path="/admin-student-data-detail" element={<AdminStudentDataDetail />} />
+            <Route path="/admin-student-data-details" element={<AdminStudentDataDetails />} />
+            <Route path="/finalBoss" element={<FinalBoss />} />
           </Route>
 
         </Routes>

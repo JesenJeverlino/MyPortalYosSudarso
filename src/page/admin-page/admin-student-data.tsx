@@ -1,6 +1,6 @@
 import StudentDataClassDropdownField from "@/components/student-data-component/student-data-form-component/student-data-class-dropdown-field";
 import DashboardPendingCard from "@/components/dashboard-component/dashboard-card-and-icon/dashboard-pending-card";
-import StudentDataSearchField from "@/components/student-data-component/student-data-form-component/student-data-search-field";
+import StudentDataSearchField from "@/components/student-data-component/student-data-form-component/student-data-search-field"
 
 export default function AdminStudentData() {
   return (
@@ -12,10 +12,10 @@ export default function AdminStudentData() {
         <StudentDataClassDropdownField></StudentDataClassDropdownField>
         <StudentDataSearchField></StudentDataSearchField>
         <div className="flex flex-col items-center">
-          <DashboardPendingCard></DashboardPendingCard>
-          <DashboardPendingCard></DashboardPendingCard>
-          <DashboardPendingCard></DashboardPendingCard>
-          <DashboardPendingCard></DashboardPendingCard>
+          <DashboardPendingCard navigateTo="/admin-student-data-details"></DashboardPendingCard>
+          <DashboardPendingCard navigateTo="/admin-student-data-details"></DashboardPendingCard>
+          <DashboardPendingCard navigateTo="/admin-student-data-details"></DashboardPendingCard>
+          <DashboardPendingCard navigateTo="/admin-student-data-details"></DashboardPendingCard>
         </div>
       </div>
     </>

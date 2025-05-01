@@ -8,13 +8,13 @@ export default function AdminDashboardTwo() {
           Pending Student Account Approvals
         </h1>
         <div className="flex flex-col items-center">
-          <DashboardPendingCard></DashboardPendingCard>
-          <DashboardPendingCard></DashboardPendingCard>
-          <DashboardPendingCard></DashboardPendingCard>
-          <DashboardPendingCard></DashboardPendingCard>
-          <DashboardPendingCard></DashboardPendingCard>
-          <DashboardPendingCard></DashboardPendingCard>
-          <DashboardPendingCard></DashboardPendingCard>
+          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
+          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
+          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
+          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
+          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
+          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
+          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
         </div>
       </div>
     </>
