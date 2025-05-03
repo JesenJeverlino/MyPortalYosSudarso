@@ -10,10 +10,7 @@ export default function StudentDataClassDropdownField() {
           <option>11-A</option>
           <option>12-A</option>
         </select>
-        <Icon
-          icon="mingcute:down-fill"
-          className="absolute w-[30px] h-[30px] right-4 top-1/2 transform -translate-y-1/2"
-        />
+        <Icon icon="mingcute:down-fill" className="absolute w-[30px] h-[30px] right-4 top-1/2 transform -translate-y-1/2"/>
       </div>
     </>
   );

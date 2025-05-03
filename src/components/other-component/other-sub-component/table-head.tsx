@@ -8,9 +8,7 @@ export default function TableHead({ values }: propsType) {
       <thead>
         <tr>
           {values.map((values, index) => (
-            <th key={index} className="font-light">
-              {values}
-            </th>
+            <th key={index} className="font-light">{values}</th>
           ))}
         </tr>
       </thead>

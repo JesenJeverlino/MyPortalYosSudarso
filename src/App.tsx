@@ -1,29 +1,30 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Others
 import ScrollToTop from "@/other/scroll-to-top";
+import AuthLayout from "@/page/auth-layout"; // layout for login and register pages
+import BasicLayout from "@/page/basic-layout"; // layout for user and admin pages
 
 // Login and Register Page
-import AuthLayout from "@/page/auth-layout"
-import Login from "@/page/login-register-page/login"
-import Register from "@/page/login-register-page/register"
+import Login from "@/page/login-register-page/login";
+import Register from "@/page/login-register-page/register";
 
 // User Page
-import BasicLayout from "@/page/basic-layout"
-import UserDashboard from "@/page/user-page/user-dashboard"
-import UserStudentData from "@/page/user-page/user-student-data"
-import UserClassAndSchedule from "@/page/user-page/user-class-and-schedule"
-import UserStudyPlan from "@/page/user-page/user-study-plan"
+import UserDashboard from "@/page/user-page/user-dashboard";
+import UserStudentData from "@/page/user-page/user-student-data";
+import UserClassAndSchedule from "@/page/user-page/user-class-and-schedule";
+import UserStudyPlan from "@/page/user-page/user-study-plan";
 
 // Admin Page
-import AdminDashboard from "@/page/admin-page/admin-dashboard"
-import AdminStudentData from "@/page/admin-page/admin-student-data"
-import AdminClassManagement from "@/page/admin-page/admin-class-management"
-import AdminAccountSettings from "@/page/admin-page/admin-account-settings"
+import AdminDashboard from "@/page/admin-page/admin-dashboard";
+import AdminStudentData from "@/page/admin-page/admin-student-data";
+import AdminClassManagement from "@/page/admin-page/admin-class-management";
+import AdminAccountSettings from "@/page/admin-page/admin-account-settings";
+
 // Admin Sub Pages
-import AdminDashboardPendingDetails from "@/page/admin-page/admin-sub-pages/admin-dashboard-pending-details"
-import AdminStudentDataDetails from "@/page/admin-page/admin-sub-pages/admin-student-data-details"
-import FinalBoss from "./page/admin-page/admin-sub-pages/finalBoss";
+import AdminDashboardPendingDetails from "@/page/admin-page/admin-sub-pages/admin-dashboard-pending-details";
+import AdminStudentDataDetails from "@/page/admin-page/admin-sub-pages/admin-student-data-details";
+import AdminClassDetails from "./page/admin-page/admin-sub-pages/admin-class-details";
 
 
 
@@ -54,9 +55,10 @@ export default function App() {
             <Route path="/admin-class-management" element={<AdminClassManagement />} />
             <Route path="/admin-account-settings" element={<AdminAccountSettings />} />
 
+            {/* Admin Sub Page */}
             <Route path="/admin-dashboard-pending-details" element={<AdminDashboardPendingDetails />} />
             <Route path="/admin-student-data-details" element={<AdminStudentDataDetails />} />
-            <Route path="/finalBoss" element={<FinalBoss />} />
+            <Route path="/admin-class-details" element={<AdminClassDetails />} />
           </Route>
 
         </Routes>

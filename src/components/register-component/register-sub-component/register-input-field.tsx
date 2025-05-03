@@ -22,13 +22,8 @@ export default function RegisterInputField({ label, inputType, size }: propsType
 
   return (
     <>
-      <label className={`m-3 text-white text-xl font-medium ${currentSize.label}`}>
-        {label}
-      </label>
-      <input
-        type={inputType}
-        className={`bg-[#e8e8e8] h-[40px] pl-4 ${currentSize.input}`}
-      />
+      <label className={`m-3 text-white text-xl font-medium ${currentSize.label}`}>{label}</label>
+      <input type={inputType} className={`bg-[#e8e8e8] h-[40px] pl-4 ${currentSize.input}`}/>
     </>
   );
 }

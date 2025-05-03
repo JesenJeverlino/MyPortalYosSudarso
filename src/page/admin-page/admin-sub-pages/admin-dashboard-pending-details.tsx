@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import DashboardPendingDetails from "@/components/dashboard-component/dashboard-pending-details";
+import AdminStudentDetailsForm from "@/components/other-component/admin-student-details-form";
 import Button from "@/components/other-component/button";
 
 export default function AdminDashboardPendingDetails() {
@@ -17,7 +17,7 @@ export default function AdminDashboardPendingDetails() {
             </Link>
           </div>
         </div>
-        <DashboardPendingDetails></DashboardPendingDetails>
+        <AdminStudentDetailsForm></AdminStudentDetailsForm>
       </div>
     </>
   );

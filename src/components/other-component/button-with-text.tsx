@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 
-export default function DeleteThisStudent(){
+export default function ButtonWithText(){
     return(
         <>
         <div className="flex items-center gap-2">

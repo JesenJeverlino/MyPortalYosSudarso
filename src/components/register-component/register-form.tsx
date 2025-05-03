@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import RegisterInputField from "@/components/register-component/register-form-component/register-input-field";
-import RegisterDropdownField from '@/components/register-component/register-form-component/register-dropdown-field'
-import RegisterTextareaField from "@/components/register-component/register-form-component/register-textarea-field";
+import RegisterInputField from "@/components/register-component/register-sub-component/register-input-field";
+import RegisterDropdownField from '@/components/register-component/register-sub-component/register-dropdown-field'
+import RegisterTextareaField from "@/components/register-component/register-sub-component/register-textarea-field";
 import Button from "@/components/other-component/button";
 
 export default function RegisterForm() {

@@ -1,6 +1,6 @@
-import StudentDataInputField from "@/components/student-data-component/student-data-form-component/student-data-input-field";
-import StudentDataDropdownField from "@/components/student-data-component/student-data-form-component/student-data-dropdown-field";
-import StudentTextAreaField from "@/components/student-data-component/student-data-form-component/student-data-textarea-field";
+import InputField from "@/components/form-component/input-field";
+import DropdownField from "@/components/form-component/dropdown-field";
+import StudentTextAreaField from "@/components/form-component/textarea-field";
 import StudentDataEditSection from "@/components/student-data-component/student-data-form-component/student-data-edit-section";
 
 export default function StudentDataGeneralForm(){
@@ -10,23 +10,23 @@ export default function StudentDataGeneralForm(){
             <div className="flex-4">
                 <form action="">
 
-                    <StudentDataInputField value="NISN" inputType="text" size="large"></StudentDataInputField>
-                    <StudentDataInputField value="Full Name" inputType="text" size="large"></StudentDataInputField>
+                    <InputField value="NISN" inputType="text" size="large"></InputField>
+                    <InputField value="Full Name" inputType="text" size="large"></InputField>
 
                     <div className="flex mb-7">
-                    <StudentDataInputField value="Date of Birth" inputType="date" size="small"></StudentDataInputField>
-                    <StudentDataInputField value="Phone Number" inputType="text" size="small"></StudentDataInputField>
+                    <InputField value="Date of Birth" inputType="date" size="small"></InputField>
+                    <InputField value="Phone Number" inputType="text" size="small"></InputField>
                     </div>
 
                     <div className="flex mb-7">
-                    <StudentDataDropdownField label="Grade" options={["10", "11", "12"]}></StudentDataDropdownField>
-                    <StudentDataDropdownField label="Gender" options={["Male", "Female"]}></StudentDataDropdownField>
-                    <StudentDataDropdownField label="Religion" options={["Islam","Kristen","Katolik","Hindu","Buddha","Konghucu"]}></StudentDataDropdownField>
+                    <DropdownField label="Grade" options={["10", "11", "12"]}></DropdownField>
+                    <DropdownField label="Gender" options={["Male", "Female"]}></DropdownField>
+                    <DropdownField label="Religion" options={["Islam","Kristen","Katolik","Hindu","Buddha","Konghucu"]}></DropdownField>
                     </div>
 
                     <StudentTextAreaField label="Address"></StudentTextAreaField>
-                    <StudentDataInputField value="Parent's Name" inputType="text" size="large"></StudentDataInputField>
-                    <StudentDataInputField value="Parent's Phone Number" inputType="text" size="large"></StudentDataInputField>
+                    <InputField value="Parent's Name" inputType="text" size="large"></InputField>
+                    <InputField value="Parent's Phone Number" inputType="text" size="large"></InputField>
 
                 </form>
             </div>

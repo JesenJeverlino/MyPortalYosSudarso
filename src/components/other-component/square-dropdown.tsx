@@ -4,9 +4,7 @@ export default function SquareDropdown({ options, capacity }: { options: string[
   return (
     <>
       <div className="flex items-center mb-5 mt-15">
-        <label className={`m-5 text-[#1952a6] text-2xl font-bold`}>
-          Selected Courses
-        </label>
+        <label className={`m-5 text-[#1952a6] text-2xl font-bold`}>Selected Courses</label>
         <div className="relative w-[18%]">
           <select className="bg-[#1952a6] text-white text-lg font-bold h-[45px] w-full pl-5 appearance-none">
             {options.map((option, index) => (

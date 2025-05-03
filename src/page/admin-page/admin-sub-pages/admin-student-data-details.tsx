@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import DashboardPendingDetails from "@/components/dashboard-component/dashboard-pending-details";
+import DashboardPendingDetails from "@/components/other-component/admin-student-details-form";
 import Button from "@/components/other-component/button";
 import Table from "@/components/other-component/table";
-import SquareDropdown from "@/components/square-dropdown";
-import DeleteThisStudent from "@/components/delete-this-student";
+import SquareDropdown from "@/components/other-component/square-dropdown";
+import ButtonWithText from "@/components/other-component/button-with-text";
 
 export default function AdminStudentDataDetails() {
   return (
@@ -15,7 +15,7 @@ export default function AdminStudentDataDetails() {
             <Button value="Reject" variant="square-blue"></Button>
           </div>
           <div className="ml-auto flex">
-            <DeleteThisStudent></DeleteThisStudent>
+            <ButtonWithText></ButtonWithText>
             <Link to="/admin-dashboard">
               <Button value="Back" variant="square-blue"></Button>
             </Link>

@@ -1,20 +1,20 @@
-import DashboardPendingCard from "@/components/dashboard-component/dashboard-card-and-icon/dashboard-pending-card";
+import StudentCard from "@/components/other-component/student-card";
 
 export default function AdminDashboardTwo() {
   return (
     <>
-      <div className="mt-20 text-[#1952a6] font-bold w-[90%] flex flex-col">
+      <div className="flex flex-col w-full">
         <h1 className="text-2xl mt-4 mb-5">
           Pending Student Account Approvals
         </h1>
         <div className="flex flex-col items-center">
-          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
-          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
-          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
-          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
-          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
-          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
-          <DashboardPendingCard navigateTo="/admin-dashboard-pending-details"></DashboardPendingCard>
+          <StudentCard navigateTo="/admin-dashboard-pending-details"></StudentCard>
+          <StudentCard navigateTo="/admin-dashboard-pending-details"></StudentCard>
+          <StudentCard navigateTo="/admin-dashboard-pending-details"></StudentCard>
+          <StudentCard navigateTo="/admin-dashboard-pending-details"></StudentCard>
+          <StudentCard navigateTo="/admin-dashboard-pending-details"></StudentCard>
+          <StudentCard navigateTo="/admin-dashboard-pending-details"></StudentCard>
+          <StudentCard navigateTo="/admin-dashboard-pending-details"></StudentCard>
         </div>
       </div>
     </>

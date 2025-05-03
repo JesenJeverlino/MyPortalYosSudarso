@@ -4,7 +4,7 @@ type propsType = {
   size: "large" | "small";
 };
 
-export default function StudentDataInputField({ value, inputType, size }:propsType) {
+export default function InputField({ value, inputType, size }:propsType) {
 
     const sizeClass = {
         large: "mb-7",
@@ -17,10 +17,7 @@ export default function StudentDataInputField({ value, inputType, size }:propsTy
     <>
       <div className={`flex flex-col ${currentSize}`}>
         <label className="m-4 text-[#1952a6] text-2xl font-bold">{value}</label>
-        <input
-          type={inputType}
-          className={`bg-[#D0E1FA] h-[55px] pl-5 pr-5 rounded-[30px] w-[80%]`}
-        />
+        <input type={inputType} className={`bg-[#D0E1FA] h-[55px] pl-5 pr-5 rounded-[30px] w-[80%]`}/>
       </div>
     </>
   );

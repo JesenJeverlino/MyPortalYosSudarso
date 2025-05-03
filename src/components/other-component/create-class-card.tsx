@@ -8,7 +8,7 @@ export default function CreateClassCard({ variant }: { variant: string }) {
   return (
     <>
       {variant == "blue" ? (
-        <Link to="/finalBoss" className="bg-[#1952a6] text-white font-bold flex w-[42%] h-[160px] cursor-pointer">
+        <Link to="/admin-class-details" className="bg-[#1952a6] text-white font-bold flex w-[42%] h-[160px] cursor-pointer">
           <p className="text-5xl p-5 text-left flex-4">Class 10-A</p>
           <div className="flex-1 flex flex-col items-end justify-between p-2 pr-5">
             <Icon icon="mdi-pencil" className="w-[30px] h-[30px]"></Icon>
