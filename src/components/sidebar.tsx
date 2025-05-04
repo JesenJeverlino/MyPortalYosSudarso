@@ -1,20 +1,29 @@
 import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
-export default function Sidebar() {
-  const keAdmin = true;
+export default function Sidebar({ onClose }: { onClose?: () => void }) {
+  const keAdmin = false;
 
   return (
     <>
-      <aside className="w-68 bg-[#1952a6] text-white flex flex-col p-2">
+      <aside className={`w-68 bg-[#1952a6] text-white flex flex-col p-2 fixed h-screen md:static md:h-auto`} >
+
+        <div className="md:hidden flex justify-end p-2 ">
+          <button onClick={onClose} className="rounded text-white border-2 border-black">
+            <Icon icon="material-symbols:close" className="w-8 h-8" />
+          </button>
+        </div>
+
         <div className="flex mb-12 p-2">
           <img src="logo-yos-sudarso.jpeg" className="w-[40px] h-auto mr-2" />
           <p className="font-semibold">MYPORTAL<br />SMAK YOS SUDARSO</p>
         </div>
+
         <div className="flex flex-col items-center mb-8">
           <img src="pp-draft.jpg" className="w-[50%] h-auto rounded-full mb-3"/>
           <h1 className="text-lg font-light">John Doe</h1>
         </div>
+
         <nav className="flex flex-col gap-4 text-base w-[95%] ml-3">
 
           <NavLink to={keAdmin ? "/admin-dashboard" : "/user-dashboard"} className={({ isActive }) =>`flex items-center p-3 rounded-lg text-white ${isActive ? "bg-[#BED8FF]/40" : "hover:bg-[#BED8FF]/40"}`}>
