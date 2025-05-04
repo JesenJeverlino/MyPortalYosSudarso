@@ -1,6 +1,6 @@
 import InputField from "@/components/form-component/input-field";
 import DropdownField from "@/components/form-component/dropdown-field";
-import StudentTextAreaField from "@/components/form-component/textarea-field";
+import TextAreaField from "@/components/form-component/textarea-field";
 
 export default function AdminStudentDetailsForm() {
   return (
@@ -22,7 +22,7 @@ export default function AdminStudentDetailsForm() {
             <DropdownField label="Religion" options={["Islam","Kristen","Katolik","Hindu","Buddha","Konghucu"]}></DropdownField>
             </div>
 
-            <StudentTextAreaField label="Address"></StudentTextAreaField>
+            <TextAreaField label="Address"></TextAreaField>
             <InputField value="Parent's Name" inputType="text" size="large"></InputField>
             <InputField value="Parent's Phone Number" inputType="text" size="large"></InputField>
             <InputField value="Email" inputType="email" size="large"></InputField>

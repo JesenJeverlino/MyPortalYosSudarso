@@ -8,8 +8,8 @@ export default function AdminDashboardPendingDetails() {
       <div className="w-[95%] p-6 border-3 border-[#1952a6] rounded-[30px]">
         <div className="mt-5 w-full flex">
           <div className="flex space-x-6">
-            <Button value="Approve" variant="square-blue"></Button>
-            <Button value="Reject" variant="square-blue"></Button>
+            <Button value="Approve" variant="square-green"></Button>
+            <Button value="Reject" variant="square-red"></Button>
           </div>
           <div className="ml-auto">
             <Link to="/admin-dashboard">

@@ -1,6 +1,6 @@
 import InputField from "@/components/form-component/input-field";
 import DropdownField from "@/components/form-component/dropdown-field";
-import StudentTextAreaField from "@/components/form-component/textarea-field";
+import TextAreaField from "@/components/form-component/textarea-field";
 import StudentDataEditSection from "@/components/student-data-component/student-data-form-component/student-data-edit-section";
 
 export default function StudentDataGeneralForm(){
@@ -24,7 +24,7 @@ export default function StudentDataGeneralForm(){
                     <DropdownField label="Religion" options={["Islam","Kristen","Katolik","Hindu","Buddha","Konghucu"]}></DropdownField>
                     </div>
 
-                    <StudentTextAreaField label="Address"></StudentTextAreaField>
+                    <TextAreaField label="Address"></TextAreaField>
                     <InputField value="Parent's Name" inputType="text" size="large"></InputField>
                     <InputField value="Parent's Phone Number" inputType="text" size="large"></InputField>
 

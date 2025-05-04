@@ -4,7 +4,7 @@ export default function DashboardContactIcon({href, icon}:{href:string, icon:str
   return (
     <>
       <a href={href}>
-        <Icon icon={icon} className="w-[35px] h-[35px]" />
+        <Icon icon={icon} className="w-[35px] h-[35px] hover:opacity-50" />
       </a>
     </>
   );

@@ -8,7 +8,7 @@ export default function CreateClassCard({ variant }: { variant: string }) {
   return (
     <>
       {variant == "blue" ? (
-        <Link to="/admin-class-details" className="bg-[#1952a6] text-white font-bold flex w-[42%] h-[160px] cursor-pointer">
+        <Link to="/admin-class-details" className="bg-[#1952a6] text-white font-bold flex w-[42%] h-[160px] cursor-pointer hover:opacity-70">
           <p className="text-5xl p-5 text-left flex-4">Class 10-A</p>
           <div className="flex-1 flex flex-col items-end justify-between p-2 pr-5">
             <Icon icon="mdi-pencil" className="w-[30px] h-[30px]"></Icon>
@@ -17,7 +17,7 @@ export default function CreateClassCard({ variant }: { variant: string }) {
         </Link>
       ) : (
         <>
-          <button onClick={(e) => {setIsModalOpen(true);}} className="bg-[#d9d9d9] text-black font-bold flex items-center justify-center w-[42%] h-[160px] cursor-pointer">
+          <button onClick={(e) => {setIsModalOpen(true);}} className="bg-[#d9d9d9] text-black font-bold flex items-center justify-center w-[42%] h-[160px] cursor-pointer hover:opacity-50">
             <Icon icon="ic:outline-plus" className="w-[100px] h-[100px]"></Icon>
             <p className="text-5xl p-5 text-left">New Class</p>
           </button>
@@ -32,8 +32,8 @@ export default function CreateClassCard({ variant }: { variant: string }) {
                   <input type="text" placeholder="Class name" className="border p-2 w-full mb-3 rounded" />
                   <input type="number" placeholder="Max capacity" className="border p-2 w-full mb-3 rounded" />
                   <div className="flex justify-end gap-2">
-                    <button type="button" onClick={() => setIsModalOpen(false)} className="border px-3 py-1 rounded">Cancel</button>
-                    <button type="submit" className="bg-[#1952a6] text-white px-3 py-1 rounded">Submit</button>
+                    <button type="button" onClick={() => setIsModalOpen(false)} className="border px-3 py-1 rounded cursor-pointer hover:opacity-50">Cancel</button>
+                    <button type="submit" className="bg-[#1952a6] text-white px-3 py-1 rounded cursor-pointer hover:opacity-50">Submit</button>
                   </div>
                 </form>
               </div>

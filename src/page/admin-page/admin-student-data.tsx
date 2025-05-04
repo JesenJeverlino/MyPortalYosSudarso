@@ -1,7 +1,7 @@
 import AdminHeader from "@/components/admin-header";
 import StudentDataClassDropdownField from "@/components/student-data-component/student-data-form-component/student-data-class-dropdown-field";
+import StudentDataSearchField from "@/components/student-data-component/student-data-form-component/student-data-search-field";
 import StudentCard from "@/components/other-component/student-card";
-import StudentDataSearchField from "@/components/student-data-component/student-data-form-component/student-data-search-field"
 
 export default function AdminStudentData() {
   return (

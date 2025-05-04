@@ -16,7 +16,7 @@ export default function AdminClassManagement() {
       </div>
 
       <div className="flex items-center">
-        <p className="m-5 text-[#1952a6] text-2xl font-bold flex-grow text-right">KRS Submission</p>
+        <p className="m-5 text-[#1952a6] text-2xl font-bold flex-grow text-right">Allow KRS Submission</p>
         <Button value="Disable" variant="square-blue"></Button>
       </div>
 

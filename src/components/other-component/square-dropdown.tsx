@@ -1,10 +1,10 @@
 import { Icon } from "@iconify/react";
 
-export default function SquareDropdown({ options, capacity }: { options: string[], capacity:boolean }) {
+export default function SquareDropdown({ label, options}: { label:string, options: string[]}) {
   return (
     <>
       <div className="flex items-center mb-5 mt-15">
-        <label className={`m-5 text-[#1952a6] text-2xl font-bold`}>Selected Courses</label>
+        <label className={`m-5 text-[#1952a6] text-2xl font-bold`}>{label}</label>
         <div className="relative w-[18%]">
           <select className="bg-[#1952a6] text-white text-lg font-bold h-[45px] w-full pl-5 appearance-none">
             {options.map((option, index) => (
@@ -16,7 +16,6 @@ export default function SquareDropdown({ options, capacity }: { options: string[
             className="w-[20px] h-[20px] text-white absolute right-3 top-1/2 transform -translate-y-1/2"
           />
         </div>
-        {capacity ? (<p className="flex-1 text-right text-[#1952a6] font-bold">60/60 Student</p>):("")}
       </div>
     </>
   );
