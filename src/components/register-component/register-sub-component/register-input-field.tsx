@@ -14,7 +14,7 @@ export default function RegisterInputField({ label, inputType, size }: propsType
     const sizeClass = {
         large:{
             label:"block",
-            input:"w-[55%] mb-7"
+            input:"xl:w-[55%] lg:w-[75%] w-full mb-7"
         },
         small:{
             label:"mb-2",
@@ -30,8 +30,8 @@ export default function RegisterInputField({ label, inputType, size }: propsType
       <label className={`m-3 text-white text-xl font-medium ${currentSize.label}`}>{label}</label>
 
       {inputType === "password" ? (
-          <div className="relative h-[40px] w-[55%]">
-          <input type={showPassword ? "text" : "password"} className={`bg-[#e8e8e8] w-full h-full pl-4 ${currentSize.input}`}/>
+          <div className="relative h-[40px] xl:w-[55%] lg:w-[75%] w-full mb-7">
+          <input type={showPassword ? "text" : "password"} className={`bg-[#e8e8e8] w-full h-full pl-4`}/>
           <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 transform -translate-y-1/2 text-[#a6a6a6] hover:text-[#1952a6]">
             {showPassword ? <EyeOff size={20} className="text-black" /> : <Eye size={20} className="text-black"/>}
           </button>

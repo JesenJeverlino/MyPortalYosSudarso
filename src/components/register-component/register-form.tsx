@@ -13,22 +13,22 @@ export default function RegisterForm() {
           <RegisterInputField label="Full Name" inputType="text" size="large"></RegisterInputField>
 
           <div className="flex flex-wrap gap-6 mb-7">
-            <div className="flex flex-col w-[29%]">
+            <div className="flex flex-col xl:w-[29%] lg:w-[35%] md:w-[45%] w-full">
               <RegisterInputField label="Date of Birth" inputType="date" size="small"></RegisterInputField>
             </div>
-            <div className="flex flex-col w-[29%]">
+            <div className="flex flex-col xl:w-[29%] lg:w-[35%] md:w-[45%] w-full">
               <RegisterInputField label="Phone Number" inputType="text" size="small"></RegisterInputField>
             </div>
           </div>
 
           <div className="flex flex-wrap gap-6 mb-7">
-            <div className="flex flex-col w-[18%]">
+            <div className="flex flex-col xl:w-[18%] lg:w-[21%] md:w-[25%] w-full">
               <RegisterDropdownField label="Grade" options={["10", "11", "12"]}></RegisterDropdownField>
             </div>
-            <div className="flex flex-col w-[18%]">
+            <div className="flex flex-col xl:w-[18%] lg:w-[21%] md:w-[25%] w-full">
               <RegisterDropdownField label="Gender" options={["Male", "Female"]}></RegisterDropdownField>
             </div>
-            <div className="flex flex-col w-[18%]">
+            <div className="flex flex-col xl:w-[18%] lg:w-[21%] md:w-[25%] w-full">
               <RegisterDropdownField label="Religion" options={["Islam","Kristen","Katolik","Hindu","Buddha","Konghucu"]}></RegisterDropdownField>
             </div>
           </div>
