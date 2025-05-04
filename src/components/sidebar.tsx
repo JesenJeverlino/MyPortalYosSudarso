@@ -6,7 +6,7 @@ export default function Sidebar({ onClose }: { onClose?: () => void }) {
 
   return (
     <>
-      <aside className={`w-68 bg-[#1952a6] text-white flex flex-col p-2 fixed h-screen md:static md:h-auto`} >
+      <aside className={`w-68 bg-[#1952a6] text-white flex flex-col p-2 fixed h-screen md:static md:h-auto z-50`} >
 
         <div className="md:hidden flex justify-end p-2 ">
           <button onClick={onClose} className="rounded text-white border-2 border-black">
