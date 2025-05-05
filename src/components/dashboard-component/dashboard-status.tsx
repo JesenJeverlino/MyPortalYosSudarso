@@ -4,7 +4,7 @@ export default function DashboardStatus() {
   return (
     <>
         <div className="flex flex-col">
-          <p className="self-end text-2xl mt-4 mb-5">
+          <p className="md:self-end text-center text-2xl mt-4 mb-5">
             Your Account at a Glance
           </p>
           <StatusCard value="Your Student data is incomplete. Please review your details." icon="ph:student" bgColor="bg-[#E31B23]"></StatusCard>

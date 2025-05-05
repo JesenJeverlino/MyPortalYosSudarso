@@ -7,14 +7,14 @@ export default function BasicLayout() {
 
   const [sidebarOpen, setSidebarOpen] = useState(() => {
     if (typeof window !== "undefined") {
-      return window.innerWidth >= 768;
+      return window.innerWidth >= 1024;
     }
     return false;
   });
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setSidebarOpen(true);
       } else {
         setSidebarOpen(false);
@@ -32,7 +32,7 @@ export default function BasicLayout() {
 
         <button
           onClick={() => setSidebarOpen(true)}
-          className={`bg-[#1952a6] border-2 fixed top-4 left-4 z-50 p-2 rounded md:hidden transition-opacity duration-300 ${sidebarOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+          className={`bg-[#1952a6] border-2 fixed top-4 left-4 z-50 p-2 rounded lg:hidden transition-opacity duration-300 ${sidebarOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
           <Icon icon="material-symbols:menu" className="w-6 h-6 text-white" />
         </button>
 
@@ -40,7 +40,7 @@ export default function BasicLayout() {
 
         {/* Main content */}
         <main className="flex-1 min-h-screen bg-[#1952a6] overflow-auto">
-          <div className="flex flex-col items-center w-full h-full bg-white md:rounded-l-2xl p-5">
+          <div className="flex flex-col items-center w-full h-full bg-white lg:rounded-l-2xl p-5">
             <Outlet />
           </div>
         </main>

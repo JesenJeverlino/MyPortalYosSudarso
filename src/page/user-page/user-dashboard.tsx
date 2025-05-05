@@ -9,8 +9,8 @@ export default function UserDashboard() {
       <UserHeader img="blush/dashboard-blush-1.png" value="All Your Academic Info in One Place!  ⭐"></UserHeader>
 
       <div className="mt-20 text-[#1952a6] font-bold w-[90%]">
-        <p className="text-[3.5rem]">Welcome to MyPortal, Friends!</p>
-        <p className="text-2xl">Glad to see you here. Let's get started!</p>
+        <p className="xl:text-[3.5rem] lg:text-[2.8rem] md:text-[2.8rem] text-[2.0rem]">Welcome to MyPortal, Friends!</p>
+        <p className="lg:mb-20 mb-15 xl:text-2xl lg:text-xl md:text-lg text-base">Glad to see you here. Let's get started!</p>
         <div className="flex flex-col gap-20">
           <DashboardStatus></DashboardStatus>
           <DashboardQuickAcc

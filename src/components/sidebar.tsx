@@ -10,9 +10,9 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
         fixed h-screen z-50 top-0 left-0
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-        md:static md:translate-x-0 md:transform-none md:h-auto`} >
+        lg:static lg:translate-x-0 lg:transform-none lg:h-auto`} >
 
-        <div className="md:hidden flex justify-end p-2 ">
+        <div className="lg:hidden flex justify-end p-2 ">
           <button onClick={onClose} className="rounded text-white border-2 border-white">
             <Icon icon="material-symbols:close" className="w-8 h-8" />
           </button>
