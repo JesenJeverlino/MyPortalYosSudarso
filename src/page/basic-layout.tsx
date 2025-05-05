@@ -5,7 +5,12 @@ import Sidebar from "@/components/sidebar";
 
 export default function BasicLayout() {
 
-  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
+  const [sidebarOpen, setSidebarOpen] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth >= 768;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const handleResize = () => {
@@ -17,7 +22,6 @@ export default function BasicLayout() {
     };
 
     handleResize();
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -26,15 +30,13 @@ export default function BasicLayout() {
     <>
       <div className="flex">
 
-        {/* Toogle Sidebar Button */}
-        <button onClick={() => setSidebarOpen(!sidebarOpen)} className={`bg-[#1952a6] border-2 absolute md:hidden fixed top-4 left-4 z-50  p-2 rounded shadow ${sidebarOpen ? "hidden":""}`}>
-          <Icon icon={sidebarOpen ? "" : "material-symbols:menu"} className="w-6 h-6 text-white" />
+        <button
+          onClick={() => setSidebarOpen(true)}
+          className={`bg-[#1952a6] border-2 fixed top-4 left-4 z-50 p-2 rounded md:hidden transition-opacity duration-300 ${sidebarOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+          <Icon icon="material-symbols:menu" className="w-6 h-6 text-white" />
         </button>
 
-        {/* Sidebar */}
-        {(sidebarOpen || window.innerWidth >= 768) && (
-        <Sidebar onClose={() => setSidebarOpen(false)} />
-        )}
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
         {/* Main content */}
         <main className="flex-1 min-h-screen bg-[#1952a6] overflow-auto">

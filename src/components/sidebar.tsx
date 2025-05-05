@@ -1,15 +1,19 @@
 import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
-export default function Sidebar({ onClose }: { onClose?: () => void }) {
+export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const keAdmin = false;
 
   return (
     <>
-      <aside className={`w-68 bg-[#1952a6] text-white flex flex-col p-2 fixed h-screen md:static md:h-auto z-50`} >
+      <aside className={`w-68 bg-[#1952a6] text-white flex flex-col p-2
+        fixed h-screen z-50 top-0 left-0
+        transform transition-transform duration-300 ease-in-out
+        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        md:static md:translate-x-0 md:transform-none md:h-auto`} >
 
         <div className="md:hidden flex justify-end p-2 ">
-          <button onClick={onClose} className="rounded text-white border-2 border-black">
+          <button onClick={onClose} className="rounded text-white border-2 border-white">
             <Icon icon="material-symbols:close" className="w-8 h-8" />
           </button>
         </div>
@@ -19,7 +23,7 @@ export default function Sidebar({ onClose }: { onClose?: () => void }) {
           <p className="font-semibold">MYPORTAL<br />SMAK YOS SUDARSO</p>
         </div>
 
-        <div className="flex flex-col items-center mb-8">
+        <div className={`flex flex-col items-center mb-8 ${keAdmin ? "hidden" : "flex"}`}>
           <img src="pp-draft.jpg" className="w-[50%] h-auto rounded-full mb-3"/>
           <h1 className="text-lg font-light">John Doe</h1>
         </div>
