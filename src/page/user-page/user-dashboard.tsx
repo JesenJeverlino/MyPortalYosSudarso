@@ -1,5 +1,5 @@
 import UserHeader from "@/components/user-header";
-import DashboardStatus from "@/components/dashboard-component/dashboard-status";
+import DashboardSFeature from "@/components/dashboard-component/dashboard-feature";
 import DashboardQuickAcc from "@/components/dashboard-component/dashboard-quick-acc";
 import DashboardContact from "@/components/dashboard-component/dashboard-contact";
 
@@ -12,7 +12,7 @@ export default function UserDashboard() {
         <p className="xl:text-[3.5rem] lg:text-[2.8rem] md:text-[2.8rem] text-[2.0rem]">Welcome to MyPortal, Friends!</p>
         <p className="lg:mb-20 mb-15 xl:text-2xl lg:text-xl md:text-lg text-base">Glad to see you here. Let's get started!</p>
         <div className="flex flex-col gap-20">
-          <DashboardStatus></DashboardStatus>
+          <DashboardSFeature></DashboardSFeature>
           <DashboardQuickAcc
             value={[
               "View Your Student Profile",
