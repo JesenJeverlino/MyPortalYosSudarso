@@ -5,7 +5,7 @@ import StudentDataEditSection from "@/components/student-data-component/student-
 export default function StudentDataAuthForm() {
   return (
     <>
-      <div className="mt-20 w-[90%] flex">
+      <div className="mt-20 w-[90%] flex md:flex-row flex-col-reverse">
         <div className="flex-4">
           <form action="">
             <InputField value="Email" inputType="email" size="large"></InputField>

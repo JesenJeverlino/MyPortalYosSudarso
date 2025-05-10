@@ -10,7 +10,7 @@ export default function DropdownField({label,options,}: propsType) {
     <>
       <div className="flex flex-col flex-1">
         <label className={`m-4 text-[#1952a6] text-2xl font-bold`}>{label}</label>
-        <div className="relative w-[60%]">
+        <div className="relative xl:w-[60%] md:w-[78%] sm:w-[80%] w-[100%]">
           <select className="bg-[#D0E1FA] h-[55px] w-full pl-5 rounded-[30px] appearance-none">
             {options.map((option, index) => (
               <option key={index} value={option}>

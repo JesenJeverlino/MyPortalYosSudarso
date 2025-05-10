@@ -4,7 +4,7 @@ import Button from "@/components/other-component/button";
 export default function LoginCardLeft() {
   return (
     <>
-      <div className="flex-1 bg-[#1952a6]/80 text-white flex flex-col md:p-0 p-2 rounded-tl-[20px] rounded-bl-[20px]">
+      <div className="flex-1 bg-[#1952a6]/80 text-white flex flex-col md:p-0 p-2 md:rounded-tl-[20px] md:rounded-bl-[20px]">
         <div className="flex md:m-[10px]">
           <img
             src="logo-yos-sudarso.jpeg"
