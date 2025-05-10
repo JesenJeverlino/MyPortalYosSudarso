@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 export default function StudentDataClassDropdownField() {
   return (
     <>
-      <div className="relative h-[55px] w-[20%] mb-8">
+      <div className="relative h-[55px] xl:w-[20%] md:w-[25%] sm:w-[30%] w-[45%] mb-8">
         <select className="bg-[#D0E1FA] h-[55px] w-full pl-5 rounded-[30px] appearance-none">
           <option>All Class</option>
           <option>10-A</option>

@@ -36,7 +36,7 @@ export default function AdminStudentDetailsForm() {
           <label htmlFor="profile-picture">
             <img
               src="pp-draft.jpg"
-              className="w-[50%] h-auto rounded-full mb-3 mx-auto"
+              className="xl:w-[50%] w-[75%] h-auto rounded-full mb-3 mx-auto"
             />
           </label>
           <input type="file" id="profile-picture" className="hidden" />

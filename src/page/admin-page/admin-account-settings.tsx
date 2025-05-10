@@ -7,7 +7,7 @@ export default function AdminAccountSettings() {
   return (
     <>
       <AdminHeader value="Account Settings"></AdminHeader>
-      <div className="mt-20 w-[90%] flex">
+      <div className="mt-20 w-[90%] flex md:flex-row flex-col-reverse md:gap-0 gap-5">
         <div className="flex-4">
           <form action="">
             <InputField value="Full Name" inputType="text" size="large"></InputField>

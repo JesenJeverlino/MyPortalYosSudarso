@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  const keAdmin = false;
+  const keAdmin = true;
 
   return (
     <>

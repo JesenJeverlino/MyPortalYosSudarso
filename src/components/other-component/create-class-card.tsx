@@ -8,8 +8,8 @@ export default function CreateClassCard({ variant }: { variant: string }) {
   return (
     <>
       {variant == "blue" ? (
-        <Link to="/admin-class-details" className="bg-[#1952a6] text-white font-bold flex w-[42%] h-[160px] cursor-pointer hover:opacity-70">
-          <p className="text-5xl p-5 text-left flex-4">Class 10-A</p>
+        <Link to="/admin-class-details" className="bg-[#1952a6] text-white font-bold flex md:w-[42%] w-[100%] h-[160px] cursor-pointer hover:opacity-70">
+          <p className="2xl:text-5xl xl:text-4xl md:text-3xl text-2xl p-5 text-left flex-4">Class 10-A</p>
           <div className="flex-1 flex flex-col items-end justify-between p-2 pr-5">
             <Icon icon="mdi-pencil" className="w-[30px] h-[30px]"></Icon>
             <p className="text-lg">60/60</p>
@@ -17,9 +17,9 @@ export default function CreateClassCard({ variant }: { variant: string }) {
         </Link>
       ) : (
         <>
-          <button onClick={(e) => {setIsModalOpen(true);}} className="bg-[#d9d9d9] text-black font-bold flex items-center justify-center w-[42%] h-[160px] cursor-pointer hover:opacity-50">
-            <Icon icon="ic:outline-plus" className="w-[100px] h-[100px]"></Icon>
-            <p className="text-5xl p-5 text-left">New Class</p>
+          <button onClick={(e) => {setIsModalOpen(true);}} className="bg-[#d9d9d9] text-black font-bold flex items-center justify-center md:w-[42%] w-[100%] h-[160px] cursor-pointer hover:opacity-50">
+            <Icon icon="ic:outline-plus" className="h-auto sm:w-[100px] w-[70px] "></Icon>
+            <p className="2xl:text-5xl xl:text-4xl sm:text-3xl text-2xl p-5 text-left">New Class</p>
           </button>
 
 
