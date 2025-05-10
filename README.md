@@ -22,6 +22,7 @@ Academic portal management system for SMA Yos Sudarso Batam. The application hel
 
 ## 📦 Installation
 
+```bash
 git clone https://github.com/JesenJeverlino/MyPortalYosSudarso.git
 cd MyPortalYosSudarso
 pnpm install
