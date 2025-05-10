@@ -9,7 +9,7 @@ export default function AdminStudentDataDetails() {
   return (
     <>
       <div className="w-[95%] overflow-x-auto pb-5">
-        <div className="p-6 border-3 border-[#1952a6] rounded-[30px] min-w-[1200px]">
+        <div className="p-6 border-3 border-[#1952a6] rounded-[30px] min-w-[900px]">
           <div className="mt-5 w-full flex">
             <div className="flex space-x-6">
               <Button value="Mark as Graduate" variant="square-green"></Button>
