@@ -1,6 +1,6 @@
 # System MyPortal SMA Yos Sudarso Batam (Frontend)
 
-Academic portal management system for SMA Yos Sudarso Batam. The application helps manage student data, class schedules, and study plans in a modern, responsive interface.
+Academic portal management system for SMA Yos Sudarso Batam. The application helps manage student data, class schedules, and study plans in a modern & responsive interface.
 
 
 
