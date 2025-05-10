@@ -9,7 +9,7 @@ export default function LoginCardRight() {
   
   return (
     <>
-      <div className="flex-2 flex flex-col bg-white/80">
+      <div className="flex-2 flex flex-col bg-white/80 rounded-tr-[20px] rounded-br-[20px]">
         <p className="font-bold text-[#1952a6] mt-10 mb-6 text-center 2xl:text-5xl lg:text-4xl md:text-3xl text-2xl">Welcome to MyPortal</p>
         <form className="flex flex-col items-center justify-around flex-1">
           <input type="email" placeholder="Email" className="px-5 w-[70%] mb-[10px] mx-[10px] rounded-[5px] border-2 
