@@ -49,11 +49,9 @@ export default function AdminClassDetails() {
               <AdminChooseTable></AdminChooseTable>
             </table>
           </div>
-
-
-          <div className="flex mb-5 mt-15 font-bold items-center">
-            <label className="m-5 text-[#1952a6] text-2xl">Class Roster</label>
-            <p className="flex-1 text-right text-[#1952a6]">60/60 Student</p>
+          <div className="flex items-end">
+          <SquareDropdown label="Class Roster" options={["07.00-08.00","07.00-08.00","07.00-08.00"]}></SquareDropdown>
+          <p className="text-right text-[#1952a6]">60/60 Student</p>
           </div>
           <div className="flex items-center p-2 border border-[#1952a6] text-[#1952a6] font-bold mb-5 gap-5">
             <img src="pp-draft.jpg" className="w-[8%] h-auto rounded-full" />

@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 export default function SquareDropdown({ label, options}: { label:string, options: string[]}) {
   return (
     <>
-      <div className="flex items-center mb-5 mt-15">
+      <div className="flex flex-1 items-center mb-5 mt-15">
         <label className={`m-5 text-[#1952a6] text-2xl font-bold`}>{label}</label>
         <div className="relative w-[18%]">
           <select className="bg-[#1952a6] text-white text-lg font-bold h-[45px] w-full pl-5 appearance-none">

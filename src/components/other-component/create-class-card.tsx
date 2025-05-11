@@ -27,12 +27,12 @@ export default function CreateClassCard({ variant }: { variant: string }) {
           {isModalOpen && (
             <div className="fixed inset-0 bg-white/30 backdrop-blur-sm flex items-center justify-center z-50">
               <div className="bg-white p-6 rounded shadow w-[90%] max-w-md">
-                <h2 className="text-lg font-bold mb-4">Create New Class</h2>
+                <h2 className="text-lg font-bold mb-4 text-[#1952a6]">Create New Class</h2>
                 <form>
-                  <input type="text" placeholder="Class name" className="border p-2 w-full mb-3 rounded" />
-                  <input type="number" placeholder="Max capacity" className="border p-2 w-full mb-3 rounded" />
+                  <input type="text" placeholder="Class Name" className="border border-[#1952a6] p-2 w-full mb-3 rounded" />
+                  <input type="number" placeholder="Max Capacity" className="border border-[#1952a6] p-2 w-full mb-3 rounded" />
                   <div className="flex justify-end gap-2">
-                    <button type="button" onClick={() => setIsModalOpen(false)} className="border px-3 py-1 rounded cursor-pointer hover:opacity-50">Cancel</button>
+                    <button type="button" onClick={() => setIsModalOpen(false)} className="border border-[#1952a6] text-[#1952a6] px-3 py-1 rounded cursor-pointer hover:opacity-50">Cancel</button>
                     <button type="submit" className="bg-[#1952a6] text-white px-3 py-1 rounded cursor-pointer hover:opacity-50">Submit</button>
                   </div>
                 </form>

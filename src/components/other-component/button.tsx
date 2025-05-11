@@ -1,10 +1,10 @@
 type ButtonProps = {
     value: string;
     variant: 'round-blue' | 'round-blue-transparent' | 'square-blue' | 'square-yellow'| 'square-green'| 'square-red';
-
+    onClick?: () => void; 
   };
 
-export default function Button({variant,value,}: ButtonProps) {
+export default function Button({variant,value,onClick}: ButtonProps) {
 
     let variantClass = '';
 
@@ -24,7 +24,7 @@ export default function Button({variant,value,}: ButtonProps) {
     
   return (
     <>
-      <button className={`cursor-pointer ${variantClass}`}>{value}</button>
+      <button className={`cursor-pointer ${variantClass}`} onClick={onClick}>{value}</button>
     </>
   );
 }
