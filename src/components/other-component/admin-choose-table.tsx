@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { Icon } from "@iconify/react";
 
 type RowData = {
   startTime: string;
@@ -10,6 +11,10 @@ type RowData = {
 };
 
 export default function AdminChooseTable() {
+
+  // untuk dropdown
+  const subjectOptions = ["Mathematics", "Physics", "Chemistry", "Biology"];
+
   const [rows, setRows] = useState<RowData[]>([
     { startTime: "", endTime: "", subject: "", teacher: "", class: "" },
   ]);
@@ -58,30 +63,31 @@ export default function AdminChooseTable() {
                 />
               </div>
             </td>
-
-            <td className="pt-5 pb-5">
-              <input
-                type="text"
+            <td className="pt-5 pb-5 flex justify-center">
+              <div className="relative">
+              <select
                 value={row.subject}
                 onChange={(e) => updateRow(index, "subject", e.target.value)}
-                className="pl-1 border rounded border-[#5398ff]"
-                placeholder="type here..."
+                className="pl-1 pr-5 border rounded border-[#5398ff] appearance-none"
+              >
+                <option value="" disabled>Select Subject...</option>
+                {subjectOptions.map((subj, i) => (
+                  <option key={i} value={subj}>
+                    {subj}
+                  </option>
+                ))}
+              </select>
+              <Icon
+                icon="mingcute:down-fill"
+                className="w-[20px] h-[20px] text-[#5398ff] absolute right-0 top-1/2 transform -translate-y-1/2"
               />
+              </div>
             </td>
             <td className="pt-5 pb-5">
               <input
                 type="text"
                 value={row.teacher}
                 onChange={(e) => updateRow(index, "teacher", e.target.value)}
-                className="pl-1 border rounded border-[#5398ff]"
-                placeholder="type here..."
-              />
-            </td>
-            <td className="pt-5 pb-5">
-              <input
-                type="text"
-                value={row.class}
-                onChange={(e) => updateRow(index, "class", e.target.value)}
                 className="pl-1 border rounded border-[#5398ff]"
                 placeholder="type here..."
               />

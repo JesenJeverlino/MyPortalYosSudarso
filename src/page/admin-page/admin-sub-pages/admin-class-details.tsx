@@ -45,7 +45,7 @@ export default function AdminClassDetails() {
           <SquareDropdown label="Class Schedule" options={["Monday","Tuesday","Wednesday","Thursday","Friday"]}></SquareDropdown>
           <div className="w-full rounded-[30px] border-3 border-[#1952a6] p-5 pb-0">
             <table className="w-full relative">
-              <TableHead values={["No", "Time", "Subject", "Teacher", "Class"]}></TableHead>
+              <TableHead values={["No", "Time", "Subject", "Teacher"]}></TableHead>
               <AdminChooseTable></AdminChooseTable>
             </table>
           </div>
