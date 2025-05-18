@@ -18,8 +18,9 @@ export default function LoginCardRight() {
     e.preventDefault();
     setLoading(true);
 
-    try {
-      const res = await auth_login({ email, password });
+      try {
+        const res = await auth_login({ email, password });
+        localStorage.setItem('loginInfo', JSON.stringify(res.data));
       toast.success(res.message || "Login successful!", {
         onClose: () => {
           if (res.data.role === "Admin") {

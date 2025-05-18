@@ -19,7 +19,6 @@ export default function RegisterForm() {
   const onSubmit = async (data: RegisterReqDto) => {
     setLoading(true);
     try {
-      console.log(data);
       if (data.dateOfBirth == "") {
         toast.error("Date of Birth is required");
         return;

@@ -15,7 +15,7 @@ export default function Button({variant, onClick, type, disabled, value}: Button
     } else if (variant === 'round-blue-transparent') {
       variantClass = 'bg-transparent border border-white text-white rounded-[60px] hover:opacity-50 2xl:w-[270px] xl:w-[240px] lg:w-[200px] md:w-[170px] lg:h-[65px] w-[130px] md:h-[50px] h-[50px] lg:text-[1.1rem] text-[0.8rem]';
     } else if (variant === 'square-blue') {
-      variantClass = 'bg-[#1952a6] border-2 border-white text-white hover:opacity-50 text-[1.3rem] w-[150px] h-[45px] text-[0.8rem]';
+      variantClass = 'bg-[#1952a6] text-white hover:opacity-50 text-[1.3rem] w-[150px] h-[45px]';
     } else if (variant === 'square-yellow') {
       variantClass = 'bg-[#FCD30A] text-[1.3rem] w-[150px] h-[45px] font-bold hover:opacity-70';
     } else if (variant === 'square-green') {

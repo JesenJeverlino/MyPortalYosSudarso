@@ -2,7 +2,9 @@ import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  const keAdmin = false;
+  const loginInfo = localStorage.getItem('loginInfo');
+  const role = loginInfo ? JSON.parse(loginInfo).role : null;
+  const keAdmin = role === 'Admin';
 
   return (
     <>
@@ -56,7 +58,7 @@ export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose:
             {keAdmin ? "Account Settings" : "Study Plan"}
           </NavLink>
 
-          <NavLink to="/" className={({ isActive }) =>`flex items-center p-3 rounded-lg text-white ${isActive ? "bg-[#BED8FF]/40" : "hover:bg-[#BED8FF]/40"}`}>
+          <NavLink to="/" className={({ isActive }) =>`flex items-center p-3 rounded-lg text-white ${isActive ? "bg-[#BED8FF]/40" : "hover:bg-[#BED8FF]/40"}`}  onClick={() => {localStorage.removeItem('loginInfo');}}>
             <Icon icon="material-symbols:logout-rounded" className="w-[24px] h-[24px] mr-2"/>Logout
           </NavLink>
           
