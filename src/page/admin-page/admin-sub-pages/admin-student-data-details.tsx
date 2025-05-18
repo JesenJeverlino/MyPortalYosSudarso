@@ -12,8 +12,8 @@ export default function AdminStudentDataDetails() {
         <div className="p-6 border-3 border-[#1952a6] rounded-[30px] min-w-[900px]">
           <div className="mt-5 w-full flex">
             <div className="flex space-x-6">
-              <Button value="Mark as Graduate" variant="square-green"></Button>
-              <Button value="Undo Promotion" variant="square-red"></Button>
+              <Button value="Promote" variant="square-green"></Button>
+              <Button value="Demote" variant="square-red"></Button>
             </div>
             <div className="ml-auto flex">
               <ButtonWithText></ButtonWithText>

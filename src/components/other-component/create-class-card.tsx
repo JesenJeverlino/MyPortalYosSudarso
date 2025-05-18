@@ -9,7 +9,7 @@ export default function CreateClassCard({ variant }: { variant: string }) {
     <>
       {variant == "blue" ? (
         <Link to="/admin-class-details" className="bg-[#1952a6] text-white font-bold flex md:w-[42%] w-[100%] h-[160px] cursor-pointer hover:opacity-70">
-          <p className="2xl:text-5xl xl:text-4xl md:text-3xl text-2xl p-5 text-left flex-4">Class 10-A</p>
+          <p className="2xl:text-5xl xl:text-4xl md:text-3xl text-2xl p-5 text-left flex-4">Class 11-A</p>
           <div className="flex-1 flex flex-col items-end justify-between p-2 pr-5">
             <Icon icon="mdi-pencil" className="w-[30px] h-[30px]"></Icon>
             <p className="text-lg">60/60</p>

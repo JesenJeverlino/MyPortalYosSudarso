@@ -22,7 +22,7 @@ export default function LoginCardRight() {
             </button>
           </div>
 
-          <Link to="/admin-dashboard" className="mb-[40px]">
+          <Link to="/user-dashboard" className="mb-[40px]">
             <Button value="LOGIN" variant="round-blue" />
           </Link>
         </form>
