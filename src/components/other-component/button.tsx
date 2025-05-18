@@ -1,10 +1,12 @@
 type ButtonProps = {
-    value: string;
     variant: 'round-blue' | 'round-blue-transparent' | 'square-blue' | 'square-yellow'| 'square-green'| 'square-red';
     onClick?: () => void; 
+    disabled?: boolean;
+    type?: "button" | "submit" | "reset";
+    value: string;
   };
 
-export default function Button({variant,value,onClick}: ButtonProps) {
+export default function Button({variant, onClick, type, disabled, value}: ButtonProps) {
 
     let variantClass = '';
 
@@ -24,7 +26,7 @@ export default function Button({variant,value,onClick}: ButtonProps) {
     
   return (
     <>
-      <button className={`cursor-pointer ${variantClass}`} onClick={onClick}>{value}</button>
+      <button className={`cursor-pointer ${variantClass}`} onClick={onClick} type={type} disabled={disabled}>{value}</button>
     </>
   );
 }
