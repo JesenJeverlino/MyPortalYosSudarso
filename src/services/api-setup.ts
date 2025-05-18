@@ -25,7 +25,7 @@ export async function apiRequest<T>({
   }
   if (param && method === "GET") {
     const queryString = new URLSearchParams(param).toString();
-    endpoint += `?${queryString}`;
+    endpoint += `${queryString}`;
   }
 
   const response = await fetch(`${path}${endpoint}`, config);

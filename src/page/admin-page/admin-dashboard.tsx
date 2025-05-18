@@ -1,9 +1,10 @@
 import AdminHeader from "@/components/admin-header";
 import DashboardQuickAcc from "@/components/dashboard-component/dashboard-quick-acc";
 import DashboardPending from "@/components/dashboard-component/dashboard-pending";
+import { useState } from "react";
 
 export default function AdminDashboard() {
-  const adaGak = true;
+const [adaGak, setAdaGak] = useState(true);
 
   return (
     <>
@@ -19,7 +20,7 @@ export default function AdminDashboard() {
           ]}
         ></DashboardQuickAcc>
         {adaGak ? (
-          <DashboardPending></DashboardPending>
+          <DashboardPending onCheckData={(hasData) => setAdaGak(hasData)}></DashboardPending>
         ) : (
           <h1 className="text-center mt-50 mb-50 text-[#1952a6] font-bold">"No account registration requests at the moment. Please check back later!"</h1>
         )}
