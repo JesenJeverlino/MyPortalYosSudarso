@@ -21,3 +21,12 @@ export function admin_getAllActiveStudents() {
 export function admin_getStudentDetails(param:string) {
   return apiRequest<any>({ method: "GET", endpoint: `/StudentData/student-details/${param}`});
 }
+
+export interface ApproveRejectReqDto {
+  nisn: string;
+  isApproved: boolean;
+}
+
+export function admin_approveReject(param:ApproveRejectReqDto) {
+  return apiRequest<any>({ method: "POST", endpoint: `/User/approve-reject`, param});
+}

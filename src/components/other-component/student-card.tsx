@@ -17,7 +17,6 @@ export default function StudentCard({
   navigateTo,
 }: StudentCardProps) {
 
-  console.log(imagePath);
   return (
     <>
       <div className="flex justify-between items-center p-2 border mb-5 md:flex-row flex-col md:gap-0 gap-5 w-[99%]">

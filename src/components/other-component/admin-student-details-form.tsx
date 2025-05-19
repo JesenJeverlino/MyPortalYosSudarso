@@ -182,7 +182,9 @@ export default function AdminStudentDetailsForm() {
             </h1>
             <label htmlFor="profile-picture">
               <img
-                src="pp-draft.jpg"
+          src={
+            studentDetails?.imagePath ? `https://localhost:44364/${studentDetails?.imagePath}` : "/default.jpg"
+          }
                 className="xl:w-[50%] w-[75%] h-auto rounded-full mb-3 mx-auto"
               />
             </label>
