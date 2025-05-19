@@ -3,7 +3,7 @@ import StudentDataClassDropdownField from "@/components/student-data-component/s
 import StudentDataSearchField from "@/components/student-data-component/student-data-form-component/student-data-search-field";
 import StudentCard from "@/components/other-component/student-card";
 import { useState, useEffect } from "react";
-import { admin_getAllActiveStudents } from "@/services/admin";
+import { userStudentData_getAllActiveStudents } from "@/services/userStudentDataAPI";
 import ClipLoader from "react-spinners/ClipLoader";
 
 type ActiveStudent = {
@@ -24,7 +24,7 @@ export default function AdminStudentData() {
     async function fetchActiveStudents() {
       setLoading(true);
       try {
-        const data = await admin_getAllActiveStudents();
+        const data = await userStudentData_getAllActiveStudents();
         setActiveStudents(data);
         setAdaGak(true);
       } catch (error: any) {

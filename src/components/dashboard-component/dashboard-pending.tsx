@@ -1,6 +1,6 @@
 import StudentCard from "@/components/other-component/student-card";
 import { useState, useEffect } from "react";
-import { admin_getAllPendingStudents } from "@/services/admin";
+import { userStudentData_getAllPendingStudents } from "@/services/userStudentDataAPI";
 import ClipLoader from "react-spinners/ClipLoader";
 
 type PendingStudent = {
@@ -22,7 +22,7 @@ export default function AdminDashboardTwo({
     async function fetchPendingStudents() {
       setLoading(true);
       try {
-        const data = await admin_getAllPendingStudents();
+        const data = await userStudentData_getAllPendingStudents();
         setPendingStudents(data);
         onCheckData(true);
       } catch (error: any) {

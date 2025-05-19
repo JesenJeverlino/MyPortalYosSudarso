@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Button from "@/components/other-component/button";
-import { auth_login } from "@/services/auth";
+import { auth_login } from "@/services/authAPI";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -18,9 +18,9 @@ export default function LoginCardRight() {
     e.preventDefault();
     setLoading(true);
 
-      try {
-        const res = await auth_login({ email, password });
-        localStorage.setItem('loginInfo', JSON.stringify(res.data));
+    try {
+      const res = await auth_login({ email, password });
+      localStorage.setItem("loginInfo", JSON.stringify(res.data));
       toast.success(res.message || "Login successful!", {
         onClose: () => {
           if (res.data.role === "Admin") {
@@ -88,10 +88,7 @@ export default function LoginCardRight() {
         </div>
       )}
 
-      <ToastContainer
-        position="top-center"
-        autoClose={1000}
-      />
+      <ToastContainer position="top-center" autoClose={1000} />
     </>
   );
 }

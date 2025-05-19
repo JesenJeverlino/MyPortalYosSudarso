@@ -9,6 +9,8 @@ export default function Sidebar({
   onClose: () => void;
 }) {
   const loginInfo = localStorage.getItem("loginInfo");
+  const imagePath = loginInfo ? JSON.parse(loginInfo).imagePath : null;
+  const name = loginInfo ? JSON.parse(loginInfo).fullname : null;
   const role = loginInfo ? JSON.parse(loginInfo).role : null;
   const keAdmin = role === "Admin";
 
@@ -48,10 +50,14 @@ export default function Sidebar({
             }`}
           >
             <img
-              src="pp-draft.jpg"
+              src={
+                imagePath
+                  ? `https://localhost:44364/${imagePath}`
+                  : "/default.jpg"
+              }
               className="w-[50%] h-auto rounded-full mb-3"
             />
-            <h1 className="text-lg font-light">John Doe</h1>
+            <h1 className="text-lg font-light">{name}</h1>
           </div>
         )}
         <nav className="flex flex-col gap-4 text-base w-[95%] ml-3">

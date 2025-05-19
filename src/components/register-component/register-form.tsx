@@ -2,7 +2,7 @@ import RegisterInputField from "@/components/register-component/register-sub-com
 import RegisterDropdownField from "@/components/register-component/register-sub-component/register-dropdown-field";
 import RegisterTextareaField from "@/components/register-component/register-sub-component/register-textarea-field";
 import Button from "@/components/other-component/button";
-import { auth_register, RegisterReqDto } from "@/services/auth";
+import { auth_register, RegisterReqDto } from "@/services/authAPI";
 import { useForm, FormProvider } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

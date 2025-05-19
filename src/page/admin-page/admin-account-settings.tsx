@@ -3,7 +3,7 @@ import InputField from "@/components/form-component/input-field";
 import AttachImgField from "@/components/form-component/attach-img-field";
 import Button from "@/components/other-component/button";
 import { useState, useEffect } from "react";
-import { AdminEditReqDto, admin_edit } from "@/services/admin";
+import { AdminEditReqDto, userStudentData_editAdminLogin } from "@/services/userStudentDataAPI";
 import { useForm, FormProvider } from "react-hook-form";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -40,8 +40,8 @@ export default function AdminAccountSettings() {
     setLoading(true);
 
     try {
-      const res = await admin_edit(data);
-      toast.success(res.message || "Register successful!");
+      const res = await userStudentData_editAdminLogin(data);
+      toast.success(res.message || "success!");
       localStorage.setItem("loginInfo", JSON.stringify(data));
       methods.reset(data);
       setPreviousData(data);
@@ -49,7 +49,7 @@ export default function AdminAccountSettings() {
     } catch (err: any) {
       setIsEdit(false);
       methods.reset(previousData)
-      toast.error(err.message || "Register failed");
+      toast.error(err.message || "failed");
     } finally {
       setLoading(false);
     }

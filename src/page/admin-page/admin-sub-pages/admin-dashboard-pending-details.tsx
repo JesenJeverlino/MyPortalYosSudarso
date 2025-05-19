@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from "react-router-dom";
-import { admin_approveReject } from "@/services/admin";
+import { userStudentData_approveReject } from "@/services/userStudentDataAPI";
 import { useLocation } from "react-router-dom";
-import { ApproveRejectReqDto } from "@/services/admin";
+import { ApproveRejectReqDto } from "@/services/userStudentDataAPI";
 
 export default function AdminDashboardPendingDetails() {
   const location = useLocation();
@@ -20,7 +20,7 @@ export default function AdminDashboardPendingDetails() {
   async function approveReject(param: ApproveRejectReqDto) {
     setLoading(true);
     try {
-      const res = await admin_approveReject(param);
+      const res = await userStudentData_approveReject(param);
       toast.success(res.message || "Action successful!", {
         onClose: () => {
           navigate("/admin-dashboard");

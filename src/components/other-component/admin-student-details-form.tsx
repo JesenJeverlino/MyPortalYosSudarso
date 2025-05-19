@@ -2,50 +2,12 @@ import InputField from "@/components/form-component/input-field";
 import DropdownField from "@/components/form-component/dropdown-field";
 import TextAreaField from "@/components/form-component/textarea-field";
 import { useEffect, useState } from "react";
-import { admin_getStudentDetails } from "@/services/admin";
+import { userStudentData_getStudentDetails } from "@/services/userStudentDataAPI";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
-enum StudentDataGender {
-  Male = 1,
-  Female = 2,
-}
-
-enum StudentDataGrade {
-  Grade10 = 1,
-  Grade11 = 2,
-  Grade12 = 3,
-  Graduate = 4,
-}
-
-enum StudentDataReligion {
-  Islam = 1,
-  Kristen = 2,
-  Katolik = 3,
-  Buhdda = 4,
-  Hindu = 5,
-  Konghucu = 6,
-}
-
-type StudentDetails = {
-  userId: number;
-  status: string;
-  fullname: string;
-  email: string;
-  password: string;
-  nisn: string;
-  dateofBirth: string;
-  phoneNumber: string;
-  grade: StudentDataGrade;
-  gender: StudentDataGender;
-  religion: StudentDataReligion;
-  address: string;
-  parentsName: string;
-  parentsPhoneNumber: string;
-  imagePath: string;
-};
+import { StudentDetails, StudentDataReligion, StudentDataGender } from "@/other/IStudentDetails";
 
 export default function AdminStudentDetailsForm() {
   const location = useLocation();
@@ -59,7 +21,7 @@ export default function AdminStudentDetailsForm() {
   useEffect(() => {
     async function fetchPendingStudents() {
       try {
-        const data = await admin_getStudentDetails(nisn!);
+        const data = await userStudentData_getStudentDetails(nisn!);
         setStudentDetails(data);
       } catch (error: any) {
         toast.error(error.message || "No Students", {
