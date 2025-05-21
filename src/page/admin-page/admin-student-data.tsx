@@ -11,7 +11,7 @@ type ActiveStudent = {
   nisn: string;
   imagePath: string;
   userId: string;
-  //tambain grade (di be udh gw fix)
+  grade: number;
 };
 
 export default function AdminStudentData() {
@@ -37,15 +37,36 @@ export default function AdminStudentData() {
     fetchActiveStudents();
   }, []);
 
+  const [selectedClass, setSelectedClass] = useState("");
+  const [searchText, setSearchText] = useState("");
+
+  const filteredStudents = activeStudents.filter((student) => {
+    const gradeMatch = selectedClass
+      ? student.grade.toString() === selectedClass
+      : true;
+
+    const searchMatch = student.fullname
+      .toLowerCase()
+      .includes(searchText.toLowerCase());
+
+    return gradeMatch && searchMatch;
+  });
+
   return (
     <>
       <AdminHeader value="Student Data"></AdminHeader>
       <div className="mt-20 text-[#1952a6] font-bold w-[90%] flex flex-col">
-        <StudentDataClassDropdownField></StudentDataClassDropdownField>
-        <StudentDataSearchField></StudentDataSearchField>
+        <StudentDataClassDropdownField
+          value={selectedClass}
+          onChange={(e) => setSelectedClass(e.target.value)}
+        ></StudentDataClassDropdownField>
+        <StudentDataSearchField
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        ></StudentDataSearchField>
         {adaGak ? (
           <div className="flex flex-col items-center">
-            {activeStudents.map((student) => (
+            {filteredStudents.map((student) => (
               <StudentCard
                 key={student.userId}
                 fullname={student.fullname}

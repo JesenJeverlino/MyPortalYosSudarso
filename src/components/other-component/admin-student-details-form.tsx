@@ -42,7 +42,7 @@ export default function AdminStudentDetailsForm() {
   1: "10",
   2: "11",
   3: "12",
-  4: "graduate",
+  4: "Graduate",
 };
 
   return (

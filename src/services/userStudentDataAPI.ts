@@ -73,3 +73,8 @@ export interface editGeneralParamDto {
 export function userStudentData_editStudentGeneral(param: editGeneralParamDto, nisn:string) {
   return apiRequest<any>({ method: "PUT", endpoint: `/StudentData/${nisn}/edit-general`, param });
 }
+
+
+export function userStudentData_promoteDelete(param:string, nisn:string) { //param case: promote, demote, delete
+  return apiRequest<any>({ method: "POST", endpoint: `/StudentData/promote-delete?nisn=${nisn}`, param});
+}

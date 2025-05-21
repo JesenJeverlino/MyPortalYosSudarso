@@ -136,9 +136,9 @@ export default function StudentDataGeneralForm() {
   ];
 
   const gradeOptions = [
-    { label: "Grade 10", value: 1 },
-    { label: "Grade 11", value: 2 },
-    { label: "Grade 12", value: 3 },
+    { label: "10", value: 1 },
+    { label: "11", value: 2 },
+    { label: "12", value: 3 },
     { label: "Graduate", value: 4 },
   ];
 
