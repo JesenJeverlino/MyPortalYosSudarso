@@ -1,4 +1,9 @@
-export default function AttachImgField({src}:{src:string}) {
+import { useFormContext } from "react-hook-form";
+
+export default function AttachImgField({src, name, disabled, onChange}:{src:string, name:string, disabled:boolean, onChange?:(e: React.ChangeEvent<HTMLInputElement>)=> void}) {
+
+    const { register } = useFormContext();
+
   return (
     <>
       <div className="flex flex-col mb-7">
@@ -6,7 +11,7 @@ export default function AttachImgField({src}:{src:string}) {
         <label htmlFor="profile-picture">
           <img src={src} className="xl:w-[20%] md:w-[25%] sm:w-[30%] w-[50%] h-auto rounded-full mb-3"/>
         </label>
-        <input type="file" id="profile-picture" className="hidden" />
+        <input {...register(name!)} type="file" id="profile-picture" className="hidden" disabled={disabled} onChange={onChange}/>
       </div>
     </>
   );

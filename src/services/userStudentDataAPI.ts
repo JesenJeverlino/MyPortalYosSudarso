@@ -34,11 +34,42 @@ export function userStudentData_editAdminLogin(param: AdminEditReqDto) {
   return apiRequest<any>({ method: "PUT", endpoint: "/User/edit-admin", param });
 }
 
-// export interface editLoginParamDto {
-//   password: string;
-//   profilePicture: File | null;
-// }
+export interface editLoginParamDto {
+  email:string
+  password: string;
+  profilePicture: File | null;
+}
 
-// export function userStudentData_editStudentLogin(param:editLoginParamDto) {
-//   return apiRequest<any>({ method: "POST", endpoint: `/StudentData/edit-login`, param});
-// }
+export async function userStudentData_editStudentLogin(param:editLoginParamDto, nisn:string) {
+  const formData = new FormData();
+  if (param.email) formData.append("Email", param.email);
+  if (param.password) formData.append("Password", param.password);
+  if (param.profilePicture) formData.append("ProfilePicture", param.profilePicture);
+
+  const response = await fetch(`https://localhost:44364/api/StudentData/${nisn}/edit-login`, {
+    method: "PUT",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    const errorMessage = errorData.message || "Error";
+    throw new Error(errorMessage);
+  }
+
+  return response.json();
+}
+
+export interface editGeneralParamDto {
+  fullname: string;
+  dateofBirth: string;
+  phoneNumber: string;
+  religion: number; //enum
+  address: string;
+  parentsName: string;
+  parentsPhoneNumber: string;
+}
+
+export function userStudentData_editStudentGeneral(param: editGeneralParamDto, nisn:string) {
+  return apiRequest<any>({ method: "PUT", endpoint: `/StudentData/${nisn}/edit-general`, param });
+}

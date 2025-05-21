@@ -69,7 +69,7 @@ export default function InputField({
     );
   }
 
-  const { register } = useFormContext(); //ini harus buat conditioning sesuai nama useform yang memanggilnya....jika gabisa maka buat aja return banyak2
+  const { register } = useFormContext();
   return (
     <>
       <div className={`flex flex-col ${currentSize}`}>
