@@ -3,38 +3,41 @@ import AttachImgField from "@/components/form-component/attach-img-field";
 import { StudentDetails } from "@/other/IStudentDetails";
 import { useState, useEffect } from "react";
 import Button from "../other-component/button";
-import { ToastContainer, toast } from "react-toastify";
-import ClipLoader from "react-spinners/ClipLoader";
+import { toast } from "react-toastify";
 import { useForm, FormProvider } from "react-hook-form";
 import {
   userStudentData_editStudentLogin,
   editLoginParamDto,
   userStudentData_getStudentDetails,
 } from "@/services/userStudentDataAPI";
+import { useAuth } from "@/other/authContext";
 
-export default function StudentDataAuthForm() {
-  const [loading, setLoading] = useState(true);
-  const loginInfo = localStorage.getItem("loginInfo");
-  const nisn = loginInfo ? JSON.parse(loginInfo).nisn : null;
+interface FormProps {
+  setLoading: (loading: boolean) => void;
+  isLoading: boolean;
+}
 
+export default function StudentDataAuthForm({
+  setLoading,
+  isLoading,
+}: FormProps) {
+
+  const { loginInfo, login } = useAuth();
+  const nisn = loginInfo?.nisn;
+  const [previewImg, setPreviewImg] = useState("/default.jpg");
   const [studentDetails, setStudentDetails] = useState<StudentDetails>();
 
   async function fetchStudentDetails() {
+    setLoading(true);
     try {
       const data = await userStudentData_getStudentDetails(nisn!);
       setStudentDetails(data);
 
-      const currentLocalStorage = JSON.parse(
-        localStorage.getItem("loginInfo") || "{}"
-      );
-      console.log(currentLocalStorage); //jan lupa hapus
-      const updatedLocalStorage = {
-        ...currentLocalStorage,
+      login({
+        ...loginInfo!,
         password: data.password,
         imagePath: data.imagePath,
-      };
-      localStorage.setItem("loginInfo", JSON.stringify(updatedLocalStorage));
-      console.log(localStorage.getItem("loginInfo")); //jan lupa hapus
+      });
     } catch (error: any) {
       toast.error(error.message || "Error");
     } finally {
@@ -60,43 +63,53 @@ export default function StudentDataAuthForm() {
       methods.reset({
         email: studentDetails.email,
         password: studentDetails.password,
+        profilePicture: null,
       });
     }
   }, [studentDetails]);
 
   const onSubmit = async (data: editLoginParamDto) => {
-    //gw udh test, kalau ga upload maka undefined..maka upload keluarnya file list
-    console.log(data.profilePicture);
     setIsEdit(false);
-    // setLoading(true);
+    setLoading(true);
 
-    // try {
-    //   const res = await userStudentData_editStudentLogin(data, nisn);
-    //   fetchStudentDetails();
-    //   setIsEdit(false);
-    //   toast.success(res.message || "Successful!");
-    // } catch (err: any) {
-    //   methods.reset({
-    //     email: studentDetails!.email,
-    //     password: studentDetails!.password,
-    //   });
-    //   setIsEdit(false);
-    //   toast.error(err.message || "failed");
-    // } finally {
-    //   setLoading(false);
-    // }
+    try {
+      const res = await userStudentData_editStudentLogin(data, nisn!);
+      fetchStudentDetails();
+      toast.success(res.message || "Successful!");
+    } catch (err: any) {
+      methods.reset({
+        email: studentDetails!.email,
+        password: studentDetails!.password,
+      });
+      if (studentDetails?.imagePath) {
+        setPreviewImg(`https://localhost:44364/${studentDetails.imagePath}`);
+      }
+      toast.error(err.message || "failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  useEffect(() => {
+    if (studentDetails?.imagePath) {
+      setPreviewImg(`https://localhost:44364/${studentDetails.imagePath}`);
+    }
+  }, [studentDetails]);
 
   function handleImageChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
+    methods.setValue("profilePicture", file ? file : null);
     if (file) {
-      setImagePreview(URL.createObjectURL(file));
+      const previewUrl = URL.createObjectURL(file);
+      setPreviewImg(previewUrl);
+    } else {
+      setPreviewImg(
+        studentDetails
+          ? `https://localhost:44364/${studentDetails.imagePath}`
+          : "/default.jpg"
+      );
     }
   }
-
-  //lanjut preview image dulu, habis itu baru cari tau cara biar ifilelist bisa ke send ke be
 
   return (
     <>
@@ -125,11 +138,7 @@ export default function StudentDataAuthForm() {
                 name="profilePicture"
                 disabled={!isEdit}
                 onChange={handleImageChange}
-                src={
-                  studentDetails
-                    ? `https://localhost:44364/${studentDetails.imagePath}`
-                    : "/default.jpg"
-                }
+                src={previewImg}
               ></AttachImgField>
             </div>
             <div className="flex-1 flex flex-col items-end">
@@ -142,14 +151,14 @@ export default function StudentDataAuthForm() {
                     type="submit"
                     variant="square-blue"
                     value="Submit"
-                    disabled={loading}
+                    disabled={isLoading}
                   />
                 ) : (
                   <button
                     className={`cursor-pointer bg-[#FCD30A] text-[1.3rem] w-[150px] h-[45px] font-bold hover:opacity-70`}
                     onClick={() => setIsEdit(true)}
                     type="button"
-                    disabled={loading}
+                    disabled={isLoading}
                   >
                     Edit
                   </button>
@@ -159,16 +168,6 @@ export default function StudentDataAuthForm() {
           </form>
         </FormProvider>
       </div>
-
-      {imagePreview && <img src={imagePreview} alt="Preview" className="w-40 h-40 object-cover" />}
-
-      {loading && (
-        <div className="fixed inset-0 z-50 bg-black/30 flex justify-center items-center">
-          <ClipLoader color="#fff" size={50} />
-        </div>
-      )}
-
-      <ToastContainer position="top-center" autoClose={1000} />
     </>
   );
 }

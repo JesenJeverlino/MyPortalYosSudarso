@@ -150,7 +150,7 @@ export default function AdminStudentDetailsForm() {
                 className="xl:w-[50%] w-[75%] h-auto rounded-full mb-3 mx-auto"
               />
             </label>
-            <input type="file" id="profile-picture" className="hidden" />
+            <input type="file" id="profile-picture" className="hidden" disabled={true}/>
           </div>
         </div>
       )}

@@ -1,15 +1,19 @@
 import AdminHeader from "@/components/admin-header";
 import InputField from "@/components/form-component/input-field";
-import AttachImgField from "@/components/form-component/attach-img-field";
 import Button from "@/components/other-component/button";
 import { useState, useEffect } from "react";
-import { AdminEditReqDto, userStudentData_editAdminLogin } from "@/services/userStudentDataAPI";
+import {
+  AdminEditReqDto,
+  userStudentData_editAdminLogin,
+} from "@/services/userStudentDataAPI";
 import { useForm, FormProvider } from "react-hook-form";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import ClipLoader from "react-spinners/ClipLoader";
+import { useAuth } from "@/other/authContext";
 
 export default function AdminAccountSettings() {
+  const { loginInfo, login } = useAuth();
   const [loading, setLoading] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const methods = useForm({
@@ -20,18 +24,13 @@ export default function AdminAccountSettings() {
     },
   });
 
-  const [previousData, setPreviousData] = useState<AdminEditReqDto>();
-
   useEffect(() => {
-    const stored = localStorage.getItem("loginInfo");
-    if (stored) {
-      const loginInfo = JSON.parse(stored);
+    if (loginInfo) {
       const newAdminData = {
         fullname: loginInfo.fullname || "",
         email: loginInfo.email || "",
         password: loginInfo.password || "",
       };
-      setPreviousData(newAdminData);
       methods.reset(newAdminData);
     }
   }, []);
@@ -42,16 +41,26 @@ export default function AdminAccountSettings() {
     try {
       const res = await userStudentData_editAdminLogin(data);
       toast.success(res.message || "success!");
-      localStorage.setItem("loginInfo", JSON.stringify(data));
+      console.log(loginInfo);
+      login({
+        ...loginInfo!,
+        ...data, // hanya update fullname, email, password
+      });
+      console.log(loginInfo);
       methods.reset(data);
-      setPreviousData(data);
-      setIsEdit(false);
     } catch (err: any) {
-      setIsEdit(false);
-      methods.reset(previousData)
-      toast.error(err.message || "failed");
+      if (loginInfo) {
+        const newAdminData = {
+          fullname: loginInfo.fullname || "",
+          email: loginInfo.email || "",
+          password: loginInfo.password || "",
+        };
+        methods.reset(newAdminData);
+        toast.error(err.message || "failed");
+      }
     } finally {
       setLoading(false);
+      setIsEdit(false);
     }
   };
 
@@ -86,7 +95,6 @@ export default function AdminAccountSettings() {
                 inputType="password"
                 size="large"
               ></InputField>
-              {/* <AttachImgField></AttachImgField> */}
             </div>
             <div className="flex-1 flex flex-col items-end">
               {isEdit ? (

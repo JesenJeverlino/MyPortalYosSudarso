@@ -79,7 +79,7 @@ export default function AdminStudentData() {
           </div>
         ) : (
           <h1 className="text-center mt-50 mb-50 text-[#1952a6] font-bold">
-            "There are currently no students."
+            "There are currently no active students."
           </h1>
         )}
       </div>

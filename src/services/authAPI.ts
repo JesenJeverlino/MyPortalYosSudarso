@@ -20,7 +20,7 @@ export interface RegisterReqDto {
   address: string;
   parentsName: string;
   parentsPhoneNumber: string;
-    email: string;
+  email: string;
   password: string;
 }
 

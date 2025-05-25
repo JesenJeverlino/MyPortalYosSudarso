@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./other/authContext";
 
 // Others
 import ScrollToTop from "@/other/scroll-to-top";
@@ -32,36 +33,36 @@ export default function App() {
   return (
     <>
       <Router>
-      <ScrollToTop />
-        <Routes>
-          
-          {/* Login and Register Page */}
-          <Route element={<AuthLayout />}>
-            <Route path="/" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Route>
+        <AuthProvider>
+          <ScrollToTop />
+            <Routes>
+              {/* Login and Register Page */}
+              <Route element={<AuthLayout />}>
+                <Route path="/" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+              </Route>
 
 
-          <Route element={<BasicLayout />}>
-            {/* User Page */}
-            <Route path="/user-dashboard" element={<UserDashboard />} />
-            <Route path="/user-student-data" element={<UserStudentData />} />
-            <Route path="/user-class-and-schedule" element={<UserClassAndSchedule />} />
-            <Route path="/user-study-plan" element={<UserStudyPlan />} />
+              <Route element={<BasicLayout />}>
+                {/* User Page */}
+                <Route path="/user-dashboard" element={<UserDashboard />} />
+                <Route path="/user-student-data" element={<UserStudentData />} />
+                <Route path="/user-class-and-schedule" element={<UserClassAndSchedule />} />
+                <Route path="/user-study-plan" element={<UserStudyPlan />} />
 
-            {/* Admin Page */}
-            <Route path="/admin-dashboard" element={<AdminDashboard />} />
-            <Route path="/admin-student-data" element={<AdminStudentData />} />
-            <Route path="/admin-class-management" element={<AdminClassManagement />} />
-            <Route path="/admin-account-settings" element={<AdminAccountSettings />} />
+                {/* Admin Page */}
+                <Route path="/admin-dashboard" element={<AdminDashboard />} />
+                <Route path="/admin-student-data" element={<AdminStudentData />} />
+                <Route path="/admin-class-management" element={<AdminClassManagement />} />
+                <Route path="/admin-account-settings" element={<AdminAccountSettings />} />
 
-            {/* Admin Sub Page */}
-            <Route path="/admin-dashboard-pending-details" element={<AdminDashboardPendingDetails />} />
-            <Route path="/admin-student-data-details" element={<AdminStudentDataDetails />} />
-            <Route path="/admin-class-details" element={<AdminClassDetails />} />
-          </Route>
-
-        </Routes>
+                {/* Admin Sub Page */}
+                <Route path="/admin-dashboard-pending-details" element={<AdminDashboardPendingDetails />} />
+                <Route path="/admin-student-data-details" element={<AdminStudentDataDetails />} />
+                <Route path="/admin-class-details" element={<AdminClassDetails />} />
+              </Route>
+            </Routes>
+        </AuthProvider>
       </Router>
     </>
   );

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import AdminStudentDetailsForm from "@/components/other-component/admin-student-details-form";
 import Button from "@/components/other-component/button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from "react-router-dom";

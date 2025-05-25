@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { useAuth } from "@/other/authContext";
 
 export default function Sidebar({
   isOpen,
@@ -8,10 +9,11 @@ export default function Sidebar({
   isOpen: boolean;
   onClose: () => void;
 }) {
-  const loginInfo = localStorage.getItem("loginInfo");
-  const imagePath = loginInfo ? JSON.parse(loginInfo).imagePath : null;
-  const name = loginInfo ? JSON.parse(loginInfo).fullname : null;
-  const role = loginInfo ? JSON.parse(loginInfo).role : null;
+   const { loginInfo, logout } = useAuth();
+
+  const imagePath = loginInfo?.imagePath ?? null;
+  const name = loginInfo?.fullname ?? null;
+  const role = loginInfo?.role ?? null;;
   const keAdmin = role === "Admin";
 
   return (
@@ -139,8 +141,8 @@ export default function Sidebar({
               }`
             }
             onClick={() => {
-              localStorage.removeItem("loginInfo");
-            }}
+                    logout();
+                  }}
           >
             <Icon
               icon="material-symbols:logout-rounded"

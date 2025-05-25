@@ -2,8 +2,7 @@ import InputField from "@/components/form-component/input-field";
 import DropdownField from "@/components/form-component/dropdown-field";
 import TextAreaField from "@/components/form-component/textarea-field";
 import Button from "../other-component/button";
-import { ToastContainer, toast } from "react-toastify";
-import ClipLoader from "react-spinners/ClipLoader";
+import { toast } from "react-toastify";
 import { useForm, FormProvider } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { StudentDetails } from "@/other/IStudentDetails";
@@ -12,11 +11,19 @@ import {
   userStudentData_editStudentGeneral,
   userStudentData_getStudentDetails,
 } from "@/services/userStudentDataAPI";
+import { useAuth } from "@/other/authContext";
 
-export default function StudentDataGeneralForm() {
-  const [loading2, setloading2] = useState(true);
-  const loginInfo = localStorage.getItem("loginInfo");
-  const nisn = loginInfo ? JSON.parse(loginInfo).nisn : null;
+interface FormProps {
+  setLoading: (loading: boolean) => void;
+  isLoading: boolean;
+}
+
+export default function StudentDataGeneralForm({
+  setLoading,
+  isLoading,
+}: FormProps) {
+  const { loginInfo, login } = useAuth(); // pakai context
+  const nisn = loginInfo?.nisn;
 
   const [studentDetails, setStudentDetails] = useState<StudentDetails>();
 
@@ -24,19 +31,10 @@ export default function StudentDataGeneralForm() {
     try {
       const data = await userStudentData_getStudentDetails(nisn!);
       setStudentDetails(data);
-
-      const currentLocalStorage = JSON.parse(
-        localStorage.getItem("loginInfo") || "{}"
-      );
-      const updatedLocalStorage = {
-        ...currentLocalStorage,
-        fullname: data.fullname,
-      };
-      localStorage.setItem("loginInfo", JSON.stringify(updatedLocalStorage));
     } catch (error: any) {
       toast.error(error.message || "Error");
     } finally {
-      setloading2(false);
+      setLoading(false);
     }
   }
 
@@ -80,7 +78,7 @@ export default function StudentDataGeneralForm() {
   }, [studentDetails]);
 
   const onSubmit = async (data: editGeneralParamDto) => {
-    setloading2(true);
+    setLoading(true);
 
     const realSubmitData = {
       fullname: data.fullname,
@@ -95,10 +93,13 @@ export default function StudentDataGeneralForm() {
     try {
       const res = await userStudentData_editStudentGeneral(
         realSubmitData,
-        nisn
+        nisn!
       );
       fetchStudentDetails();
-      setIsedit2(false);
+      login({
+        ...loginInfo!,
+        fullname: data.fullname,
+      });
       toast.success(res.message || "Successful!");
     } catch (err: any) {
       methods.reset({
@@ -114,10 +115,10 @@ export default function StudentDataGeneralForm() {
         parentsName: studentDetails!.parentsName,
         parentsPhoneNumber: studentDetails!.parentsPhoneNumber,
       });
-      setIsedit2(false);
       toast.error(err.message || "failed");
     } finally {
-      setloading2(false);
+      setLoading(false);
+      setIsedit2(false);
     }
   };
 
@@ -234,14 +235,14 @@ export default function StudentDataGeneralForm() {
                     type="submit"
                     variant="square-blue"
                     value="Submit"
-                    disabled={loading2}
+                    disabled={isLoading}
                   />
                 ) : (
                   <button
                     className={`cursor-pointer bg-[#FCD30A] text-[1.3rem] w-[150px] h-[45px] font-bold hover:opacity-70`}
                     onClick={() => setIsedit2(true)}
                     type="button"
-                    disabled={loading2}
+                    disabled={isLoading}
                   >
                     Edit
                   </button>
@@ -251,14 +252,6 @@ export default function StudentDataGeneralForm() {
           </form>
         </FormProvider>
       </div>
-
-      {loading2 && (
-        <div className="fixed inset-0 z-50 bg-black/30 flex justify-center items-center">
-          <ClipLoader color="#fff" size={50} />
-        </div>
-      )}
-
-      <ToastContainer position="top-center" autoClose={1000} />
     </>
   );
 }

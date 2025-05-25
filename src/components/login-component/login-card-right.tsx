@@ -6,8 +6,10 @@ import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import ClipLoader from "react-spinners/ClipLoader";
+import { useAuth } from "@/other/authContext";
 
 export default function LoginCardRight() {
+  const { login } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +22,7 @@ export default function LoginCardRight() {
 
     try {
       const res = await auth_login({ email, password });
-      localStorage.setItem("loginInfo", JSON.stringify(res.data));
+      login(res.data);
       toast.success(res.message || "Login successful!", {
         onClose: () => {
           if (res.data.role === "Admin") {
