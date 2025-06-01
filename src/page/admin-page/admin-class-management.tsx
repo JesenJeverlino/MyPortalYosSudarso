@@ -10,7 +10,10 @@ import { useForm, FormProvider } from "react-hook-form";
 import { CreateorUpdateSubjectReqDto } from "@/services/subjectAPI";
 import { subject_create, subject_getAllSubjects } from "@/services/subjectAPI";
 import { classroom_getAllClassroom } from "@/services/classroomAPI";
-import { useSelection } from "@/other/allowKrsSubmitContext";
+import {
+  krsControl_updateStatus,
+  krsControl_getStatus,
+} from "@/services/krsControlAPI";
 
 type Subject = {
   subjectId: number;
@@ -30,11 +33,41 @@ type Classroom = {
 };
 
 export default function AdminClassManagement() {
-  //handle krs
-  const { selectionEnabled, setSelectionEnabled } = useSelection();
+  const [loading, setLoading] = useState(false);
+  const [isSelectionEnabled, setIsSelectionEnabled] = useState<boolean | null>(
+    null
+  );
 
-  const handleToggle = () => {
-    setSelectionEnabled(!selectionEnabled);
+  useEffect(() => {
+    async function fetchStatus() {
+      try {
+        const res = await krsControl_getStatus();
+        setIsSelectionEnabled(res.isEnabled);
+      } catch (err) {
+        console.error("Failed to fetch status:", err);
+      }
+    }
+
+    fetchStatus();
+  }, []);
+
+  const handleToggle = async () => {
+    if (isSelectionEnabled === null) return;
+
+    setLoading(true);
+    try {
+      const newStatus = !isSelectionEnabled;
+      console.log(newStatus);
+      await krsControl_updateStatus(newStatus);
+      setIsSelectionEnabled(newStatus);
+      toast.success(
+        newStatus ? "Enabled successfully!" : "Disabled successfully!"
+      );
+    } catch (err) {
+      console.error("Failed to update status:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   //handle choose grade button
@@ -65,7 +98,6 @@ export default function AdminClassManagement() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // methods for creating subject
-  const [loading, setLoading] = useState(false);
   const methods = useForm<CreateorUpdateSubjectReqDto>({
     defaultValues: {
       subjectName: "",
@@ -132,121 +164,121 @@ export default function AdminClassManagement() {
     <>
       <AdminHeader value="Class Management"></AdminHeader>
 
-        <div className="mt-20 flex flex-col gap-20 w-[90%] overflow-hidden">
-          <div className="xl:w-[100%] md:w-[120%] sm:w-[150%] w-[200%]">
-            <div className="flex gap-3">
-              <ChooseDayCard
-                value="10"
-                isActive={activeGrade === 1}
-                onClick={() => handleChooseGrade(1)}
-              ></ChooseDayCard>
-              <ChooseDayCard
-                value="11"
-                isActive={activeGrade === 2}
-                onClick={() => handleChooseGrade(2)}
-              ></ChooseDayCard>
-              <ChooseDayCard
-                value="12"
-                isActive={activeGrade === 3}
-                onClick={() => handleChooseGrade(3)}
-              ></ChooseDayCard>
-            </div>
+      <div className="mt-20 flex flex-col gap-20 w-[90%] overflow-hidden">
+        <div className="xl:w-[100%] md:w-[120%] sm:w-[150%] w-[200%]">
+          <div className="flex gap-3">
+            <ChooseDayCard
+              value="10"
+              isActive={activeGrade === 1}
+              onClick={() => handleChooseGrade(1)}
+            ></ChooseDayCard>
+            <ChooseDayCard
+              value="11"
+              isActive={activeGrade === 2}
+              onClick={() => handleChooseGrade(2)}
+            ></ChooseDayCard>
+            <ChooseDayCard
+              value="12"
+              isActive={activeGrade === 3}
+              onClick={() => handleChooseGrade(3)}
+            ></ChooseDayCard>
           </div>
+        </div>
 
-          <div className="flex items-center">
-            <p className="m-5 text-[#1952a6] sm:text-2xl text-xl font-bold flex-grow text-right">
-              Allow KRS Submission
+        <div className="flex items-center">
+          <p className="m-5 text-[#1952a6] sm:text-2xl text-xl font-bold flex-grow text-right">
+            Allow KRS Submission
+          </p>
+          <Button
+            onClick={handleToggle}
+            value={isSelectionEnabled ? "Disable" : "Enable"}
+            variant={isSelectionEnabled ? "square-yellow" : "square-blue"}
+          ></Button>
+        </div>
+
+        <div>
+          {filteredClassrooms.length > 0 ? (
+            <p className="text-[#1952a6] text-lg font-bold text-left mb-5">
+              Viewing Classes...
             </p>
-            <Button
-              onClick={handleToggle}
-              value={selectionEnabled ? "Disable" : "Enable"}
-              variant={selectionEnabled ? "square-yellow" : "square-blue"}
-            ></Button>
-          </div>
-
-          <div>
+          ) : (
+            <p className="text-[#1952a6] text-lg font-bold text-left mb-5">
+              Start Creating Classes...
+            </p>
+          )}
+          <div className="flex flex-wrap justify-between gap-5 sm:flex-row flex-col">
             {filteredClassrooms.length > 0 ? (
-              <p className="text-[#1952a6] text-lg font-bold text-left mb-5">
-                Viewing Classes...
-              </p>
-            ) : (
-              <p className="text-[#1952a6] text-lg font-bold text-left mb-5">
-                Start Creating Classes...
-              </p>
-            )}
-            <div className="flex flex-wrap justify-between gap-5 sm:flex-row flex-col">
-              {filteredClassrooms.length > 0 ? (
-                <>
-                  {filteredClassrooms.map((classroom) => (
-                    <CreateClassCard
-                      reFetchClassrooms={() => {}}
-                      key={classroom.classroomId}
-                      classroomId={classroom.classroomId}
-                      classroomName={classroom.classroomName}
-                      capacity={classroom.capacity}
-                      currentGrade={activeGrade}
-                      setParentLoading={setLoading}
-                      variant="blue"
-                    ></CreateClassCard>
-                  ))}
+              <>
+                {filteredClassrooms.map((classroom) => (
                   <CreateClassCard
-                    reFetchClassrooms={renderAfterCreateClass}
+                    reFetchClassrooms={() => {}}
+                    key={classroom.classroomId}
+                    classroomId={classroom.classroomId}
+                    classroomName={classroom.classroomName}
+                    capacity={classroom.capacity}
                     currentGrade={activeGrade}
                     setParentLoading={setLoading}
-                    variant="whitoss"
+                    variant="blue"
                   ></CreateClassCard>
-                </>
-              ) : (
+                ))}
                 <CreateClassCard
                   reFetchClassrooms={renderAfterCreateClass}
                   currentGrade={activeGrade}
                   setParentLoading={setLoading}
                   variant="whitoss"
                 ></CreateClassCard>
-              )}
-            </div>
+              </>
+            ) : (
+              <CreateClassCard
+                reFetchClassrooms={renderAfterCreateClass}
+                currentGrade={activeGrade}
+                setParentLoading={setLoading}
+                variant="whitoss"
+              ></CreateClassCard>
+            )}
           </div>
-
-          <hr className="border-3 border-[#5398ff] w-[100%]" />
-
-          <div className="flex items-center">
-            <p className="m-5 text-[#1952a6] sm:text-2xl text-xl font-bold flex-grow text-right">
-              Create Subject
-            </p>
-            <Button
-              value="Add"
-              variant="square-blue"
-              onClick={() => setIsModalOpen(true)}
-            ></Button>
-          </div>
-
-          {filteredSubjects.length > 0 ? (
-            <div>
-              <p className="text-[#1952a6] text-lg font-bold text-left mb-5">
-                Viewing Classes...
-              </p>
-              <div className="flex flex-wrap justify-between gap-5 sm:flex-row flex-col">
-                {filteredSubjects.map((subject) => (
-                  <CreateSubjectCard
-                    key={subject.subjectId}
-                    subjectId={subject.subjectId}
-                    subjectName={subject.subjectName}
-                    isMandatory={subject.isMandatory}
-                    weeklyHours={subject.maxWeeklyHours}
-                    currentGrade={activeGrade}
-                    onDeleted={fetchSubjects}
-                    setParentLoading={setLoading}
-                    loading={loading}
-                  />
-                ))}
-              </div>
-            </div>
-          ) : (
-            <h1 className="text-center mt-50 mb-50 text-[#1952a6] font-bold">
-              "There are currently no subject to display."
-            </h1>
-          )}
         </div>
+
+        <hr className="border-3 border-[#5398ff] w-[100%]" />
+
+        <div className="flex items-center">
+          <p className="m-5 text-[#1952a6] sm:text-2xl text-xl font-bold flex-grow text-right">
+            Create Subject
+          </p>
+          <Button
+            value="Add"
+            variant="square-blue"
+            onClick={() => setIsModalOpen(true)}
+          ></Button>
+        </div>
+
+        {filteredSubjects.length > 0 ? (
+          <div>
+            <p className="text-[#1952a6] text-lg font-bold text-left mb-5">
+              Viewing Classes...
+            </p>
+            <div className="flex flex-wrap justify-between gap-5 sm:flex-row flex-col">
+              {filteredSubjects.map((subject) => (
+                <CreateSubjectCard
+                  key={subject.subjectId}
+                  subjectId={subject.subjectId}
+                  subjectName={subject.subjectName}
+                  isMandatory={subject.isMandatory}
+                  weeklyHours={subject.maxWeeklyHours}
+                  currentGrade={activeGrade}
+                  onDeleted={fetchSubjects}
+                  setParentLoading={setLoading}
+                  loading={loading}
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <h1 className="text-center mt-50 mb-50 text-[#1952a6] font-bold">
+            "There are currently no subject to display."
+          </h1>
+        )}
+      </div>
 
       {isModalOpen && (
         <div className="fixed inset-0 bg-white/30 backdrop-blur-sm flex items-center justify-center z-50">

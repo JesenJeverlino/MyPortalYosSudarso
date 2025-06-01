@@ -3,13 +3,17 @@ import DashboardSFeature from "@/components/dashboard-component/dashboard-featur
 import DashboardQuickAcc from "@/components/dashboard-component/dashboard-quick-acc";
 import DashboardContact from "@/components/dashboard-component/dashboard-contact";
 import { studentSchedules_autoAssign } from "@/services/studentSchedulesAPI";
-import { useEffect } from "react";
+import { useEffect, useRef} from "react";
 import { useAuth } from "@/other/authContext";
 
 export default function UserDashboard() {
   const { loginInfo } = useAuth();
+  const hasRun = useRef(false);
 
   useEffect(() => {
+    if (hasRun.current) return;
+    hasRun.current = true;
+
     async function assignIfNeeded() {
       try {
         await studentSchedules_autoAssign(loginInfo!.nisn);

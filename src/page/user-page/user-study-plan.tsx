@@ -1,10 +1,11 @@
 import UserHeader from "@/components/user-header";
 import ChooseDay from "@/components/other-component/choose-day";
 import Table from "@/components/other-component/table";
-import { useSelection } from "@/other/allowKrsSubmitContext";
 import { useState } from "react";
 import { useAuth } from "@/other/authContext";
 import ClipLoader from "react-spinners/ClipLoader";
+import { krsControl_getStatus } from "@/services/krsControlAPI";
+import { useEffect } from "react";
 
 export default function StudyPlan() {
   const { loginInfo } = useAuth();
@@ -20,12 +21,26 @@ export default function StudyPlan() {
   }
 
   const HaveStudyPlan = loginInfo?.grade !== 1;
-  const { selectionEnabled } = useSelection();
 
   const [selectedDay, setSelectedDay] = useState(1);
   const handleDayChange = (day: 1 | 2 | 3 | 4 | 5) => {
     setSelectedDay(day);
   };
+
+  const [isSelectionEnabled, setIsSelectionEnabled] = useState<boolean | null>();
+
+  useEffect(() => {
+    async function getStatus() {
+      try {
+        const status = await krsControl_getStatus();
+        setIsSelectionEnabled(status.isEnabled);
+      } catch (error) {
+        console.error("Failed to fetch status:", error);
+      }
+    }
+
+    getStatus();
+  }, []);
 
   return (
     <>
@@ -33,7 +48,7 @@ export default function StudyPlan() {
         img="blush/studyplan-blush.png"
         value="Customize your study plan effortlessly!  📖"
       ></UserHeader>
-      {!selectionEnabled ? (
+      {!isSelectionEnabled ? (
         <h1 className="w-[80%] text-center mt-50 mb-50 text-[#1952a6] font-bold">
           Course Selection is Disabled by Admin!
         </h1>
