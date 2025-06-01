@@ -7,7 +7,7 @@ export default function UserHeader({
 }) {
   return (
     <>
-      <div className="rounded-[45px] bg-[#1952a6] flex items-center justify-center relative w-[90%] lg:h-[160px] sm:h-[110px] sm:mt-0 mt-15">
+      <div className="rounded-[45px] bg-[#1952a6] flex items-center justify-center relative w-[95%] sm:w-[90%] lg:h-[160px] sm:h-[110px] sm:mt-0 mt-15">
         <img
           src={img}
           className="absolute left-0 bottom-0 xl:h-full h-[90%] 2xl:ml-15 ml-5 xl:block hidden"

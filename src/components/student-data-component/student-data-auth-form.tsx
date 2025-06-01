@@ -103,6 +103,24 @@ export default function StudentDataAuthForm({
     if (file) {
       const previewUrl = URL.createObjectURL(file);
       setPreviewImg(previewUrl);
+
+      const img = new Image();
+      img.src = previewUrl;
+      img.onload = () => {
+        const ratio = img.width / img.height;
+        if (ratio < 0.8 || ratio > 1.25) {
+          toast.error(
+            "Image should be roughly square (aspect ratio between 0.8 and 1.25)"
+          );
+          methods.setValue("profilePicture", null);
+          e.target.value = "";
+          setPreviewImg(
+            studentDetails
+              ? `https://localhost:44364/${studentDetails.imagePath}`
+              : "/default.jpg"
+          );
+        }
+      };
     } else {
       setPreviewImg(
         studentDetails

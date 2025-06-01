@@ -79,6 +79,9 @@ export default function AdminClassDetails() {
       try {
         const res = await classroom_update(classroomId, updatedData);
         // setCapacity(capacity);
+        setClassroomDetails((prev) =>
+          prev ? { ...prev, capacity: Number(capacity) } : prev
+        );
         toast.success(res.message || "success!");
       } catch (err: any) {
         setCapacity(classroomDetails?.capacity.toString() || "");

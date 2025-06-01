@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./other/authContext";
-import { SelectionProvider } from "./other/allowKrsSubmitContext";
 
 // Others
 import ScrollToTop from "@/other/scroll-to-top";
@@ -35,7 +34,6 @@ export default function App() {
     <>
       <Router>
         <AuthProvider>
-        <SelectionProvider>
           <ScrollToTop />
             <Routes>
 
@@ -65,7 +63,6 @@ export default function App() {
               </Route>
               
             </Routes>
-        </SelectionProvider>
         </AuthProvider>
       </Router>
     </>

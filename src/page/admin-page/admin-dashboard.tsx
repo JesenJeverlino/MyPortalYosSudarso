@@ -4,7 +4,7 @@ import DashboardPending from "@/components/dashboard-component/dashboard-pending
 import { useState } from "react";
 
 export default function AdminDashboard() {
-const [adaGak, setAdaGak] = useState(true);
+  const [adaGak, setAdaGak] = useState(true);
 
   return (
     <>
@@ -20,9 +20,19 @@ const [adaGak, setAdaGak] = useState(true);
           ]}
         ></DashboardQuickAcc>
         {adaGak ? (
-          <DashboardPending onCheckData={(hasData) => setAdaGak(hasData)}></DashboardPending>
+          <DashboardPending
+            onCheckData={(hasData) => setAdaGak(hasData)}
+          ></DashboardPending>
         ) : (
-          <h1 className="text-center mt-50 mb-50 text-[#1952a6] font-bold">"No account registration requests at the moment. Please check back later!"</h1>
+          <>
+            <h1 className="text-2xl mt-4">
+              Pending Student Account Approvals
+            </h1>
+            <h1 className="text-center mt-50 mb-50 text-[#1952a6] font-bold">
+              "No account registration requests at the moment. Please check back
+              later!"
+            </h1>
+          </>
         )}
       </div>
     </>

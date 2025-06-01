@@ -97,11 +97,11 @@ export default function AdminStudentDetailsForm() {
                   label="Religion"
                   options={[
                     "Islam",
-                    "Kristen",
-                    "Katolik",
+                    "Christian",
+                    "Catholic",
+                    "Buddhist",
                     "Hindu",
-                    "Buddha",
-                    "Konghucu",
+                    "Confucian",
                   ]}
                   disabled={true}
                 ></DropdownField>

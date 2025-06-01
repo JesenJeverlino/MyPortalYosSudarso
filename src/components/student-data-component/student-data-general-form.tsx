@@ -131,11 +131,11 @@ export default function StudentDataGeneralForm({
 
   const religionOptions = [
     { label: "Islam", value: 1 },
-    { label: "Kristen", value: 2 },
-    { label: "Katolik", value: 3 },
-    { label: "Buddha", value: 4 },
+    { label: "Christian", value: 2 },
+    { label: "Catholic", value: 3 },
+    { label: "Buddhist", value: 4 },
     { label: "Hindu", value: 5 },
-    { label: "Konghucu", value: 6 },
+    { label: "Confucian", value: 6 },
   ];
 
   const gradeOptions = [

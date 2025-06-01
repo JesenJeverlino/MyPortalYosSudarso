@@ -196,6 +196,7 @@ export default function TableBodyChoose({
 
       if (selectedScheduleIds.length === 0) {
         toast.error("Choose At Least One!");
+        setActiveIndices(defaultActiveIndices);
         return;
       }
 
@@ -233,51 +234,62 @@ export default function TableBodyChoose({
                   <hr className="border border-[#5398ff] w-[100%] absolute left-1/2 -translate-x-1/2 top-8" />
                 </td>
               </tr>
-              {uniqueTimes.map((timeSlot, rowIndex) => (
-                <tr key={rowIndex}>
-                  <td className="pt-5 pb-5">{rowIndex + 1}</td>
-                  <td className="pt-5 pb-5">{`${timeSlot.startTime} - ${timeSlot.endTime}`}</td>
-                  {uniqueClassrooms.map((classroomName, classroomIndex) => {
-                    const scheduleForCell = schedules.find(
-                      (s) =>
-                        s.classroomName === classroomName &&
-                        s.startTime === timeSlot.startTime &&
-                        s.endTime === timeSlot.endTime
-                    );
-                    const displayJoinedCount =
-                      scheduleForCell?.joinedCount ?? 0;
-
-                    return (
-                      <td key={classroomIndex} className="pt-5 pb-5">
-                        {scheduleForCell ? (
-                          <>
-                            <input
-                              disabled={!isEdit}
-                              type="checkbox"
-                              className="mr-2"
-                              checked={
-                                activeIndices[rowIndex] === classroomIndex
-                              }
-                              onChange={() =>
-                                handleChange(rowIndex, classroomIndex)
-                              }
-                            />
-                            <p className="mr-1 inline">
-                              {scheduleForCell.subjectName}
-                            </p>
-                            <p className="text-xs font-extralight inline">
-                              ({displayJoinedCount} /
-                              {scheduleForCell.capacity ?? "-"})
-                            </p>
-                          </>
-                        ) : (
-                          "-"
-                        )}
-                      </td>
-                    );
-                  })}
+              {uniqueTimes.length === 0 ? (
+                <tr>
+                  <td
+                    colSpan={2 + uniqueClassrooms.length}
+                    className="py-10 text-[#1952a6] font-bold"
+                  >
+                    No schedules found for this student.
+                  </td>
                 </tr>
-              ))}
+              ) : (
+                uniqueTimes.map((timeSlot, rowIndex) => (
+                  <tr key={rowIndex}>
+                    <td className="pt-5 pb-5">{rowIndex + 1}</td>
+                    <td className="pt-5 pb-5">{`${timeSlot.startTime} - ${timeSlot.endTime}`}</td>
+                    {uniqueClassrooms.map((classroomName, classroomIndex) => {
+                      const scheduleForCell = schedules.find(
+                        (s) =>
+                          s.classroomName === classroomName &&
+                          s.startTime === timeSlot.startTime &&
+                          s.endTime === timeSlot.endTime
+                      );
+                      const displayJoinedCount =
+                        scheduleForCell?.joinedCount ?? 0;
+
+                      return (
+                        <td key={classroomIndex} className="pt-5 pb-5">
+                          {scheduleForCell ? (
+                            <>
+                              <input
+                                disabled={!isEdit}
+                                type="checkbox"
+                                className="mr-2"
+                                checked={
+                                  activeIndices[rowIndex] === classroomIndex
+                                }
+                                onChange={() =>
+                                  handleChange(rowIndex, classroomIndex)
+                                }
+                              />
+                              <p className="mr-1 inline">
+                                {scheduleForCell.subjectName}
+                              </p>
+                              <p className="text-xs font-extralight inline">
+                                ({displayJoinedCount} /
+                                {scheduleForCell.capacity ?? "-"})
+                              </p>
+                            </>
+                          ) : (
+                            "-"
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

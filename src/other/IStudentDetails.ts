@@ -12,11 +12,11 @@ export enum StudentDataGrade {
 
 export enum StudentDataReligion {
   Islam = 1,
-  Kristen = 2,
-  Katolik = 3,
-  Buhdda = 4,
+  Christian = 2,
+  Catholic = 3,
+  Buddhist = 4,
   Hindu = 5,
-  Konghucu = 6,
+  Confucian = 6,
 }
 
 export type StudentDetails = {

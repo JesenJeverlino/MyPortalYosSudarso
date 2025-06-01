@@ -46,8 +46,16 @@ export default function TableBody({ selectedDay, nisn }: propsType) {
             studentSchedules.some((ss) => ss.scheduleId === schedule.scheduleId)
         );
 
-        // 4. Mapping ke bentuk array string[][]
-        const mappedValues = filteredSchedules.map((s, index) => [
+        // 4. Filter biar dia mulai dari jam 8 dulu baru seterusnya
+        const sortedSchedules = filteredSchedules.sort((a, b) => {
+          if (a.startTime === b.startTime) {
+            return a.endTime.localeCompare(b.endTime);
+          }
+          return a.startTime.localeCompare(b.startTime);
+        });
+
+        // 5. Mapping ke bentuk array string[][]
+        const mappedValues = sortedSchedules.map((s, index) => [
           (index + 1).toString(),
           `${s.startTime} - ${s.endTime}`,
           s.subjectName,
@@ -68,27 +76,35 @@ export default function TableBody({ selectedDay, nisn }: propsType) {
   return (
     <>
       <tbody className="text-center font-medium">
-        {values.map((row, rowIndex) => (
-          <React.Fragment key={rowIndex}>
-            <tr>
-              <td>
-                <hr
-                  className={`border border-[#5398ff] w-full absolute left-1/2 -translate-x-1/2 ${
-                    rowIndex === 0 ? "top-8" : ""
-                  }`}
-                />
-              </td>
-            </tr>
-
-            <tr>
-              {row.map((cell, cellIndex) => (
-                <td key={cellIndex} className="pt-5 pb-5">
-                  {cell}
+        {values.length === 0 ? (
+          <tr>
+            <td colSpan={5} className="py-10 text-[#1952a6] font-bold">
+              No schedules found for this student.
+            </td>
+          </tr>
+        ) : (
+          values.map((row, rowIndex) => (
+            <React.Fragment key={rowIndex}>
+              <tr>
+                <td>
+                  <hr
+                    className={`border border-[#5398ff] w-full absolute left-1/2 -translate-x-1/2 ${
+                      rowIndex === 0 ? "top-8" : ""
+                    }`}
+                  />
                 </td>
-              ))}
-            </tr>
-          </React.Fragment>
-        ))}
+              </tr>
+
+              <tr>
+                {row.map((cell, cellIndex) => (
+                  <td key={cellIndex} className="pt-5 pb-5">
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            </React.Fragment>
+          ))
+        )}
       </tbody>
     </>
   );

@@ -21,7 +21,7 @@ export default function SquareDropdown({
         <label className={`m-5 text-[#1952a6] text-2xl font-bold`}>
           {label}
         </label>
-        <div className="relative w-[18%]">
+        <div className="relative 2xl:w-[18%] w-[22%]">
           <select
             onChange={handleChange}
             className="bg-[#1952a6] text-white text-lg font-bold h-[45px] w-full pl-5 appearance-none"

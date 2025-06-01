@@ -103,11 +103,11 @@ export default function RegisterForm() {
                   label="Religion"
                   options={[
                     "Islam",
-                    "Kristen",
-                    "Katolik",
-                    "Buddha",
+                    "Christian",
+                    "Catholic",
+                    "Buddhist",
                     "Hindu",
-                    "Konghucu",
+                    "Confucian",
                   ]}
                 ></RegisterDropdownField>
               </div>
