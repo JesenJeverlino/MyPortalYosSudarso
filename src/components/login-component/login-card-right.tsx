@@ -11,8 +11,10 @@ import { useAuth } from "@/other/authContext";
 export default function LoginCardRight() {
   const { login } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -23,6 +25,11 @@ export default function LoginCardRight() {
     try {
       const res = await auth_login({ email, password });
       login(res.data);
+      const userRole = {
+        userId: res.data.userId,
+        role: res.data.role,
+      };
+      localStorage.setItem("userRole", JSON.stringify(userRole));
       toast.success(res.message || "Login successful!", {
         onClose: () => {
           if (res.data.role === "Admin") {

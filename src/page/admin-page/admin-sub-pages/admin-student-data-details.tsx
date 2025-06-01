@@ -11,6 +11,14 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import ClipLoader from "react-spinners/ClipLoader";
 
+const dayMapping: Record<string, number> = {
+  Monday: 1,
+  Tuesday: 2,
+  Wednesday: 3,
+  Thursday: 4,
+  Friday: 5,
+};
+
 export default function AdminStudentDataDetails() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -41,6 +49,13 @@ export default function AdminStudentDataDetails() {
     }
   }
 
+  const [selectedDayNumber, setSelectedDayNumber] = useState<number>(1);
+
+  function handleDayChange(selectedDay: string) {
+    const dayNumber = dayMapping[selectedDay];
+    setSelectedDayNumber(dayNumber);
+  }
+
   return (
     <>
       <div className="w-[95%] overflow-x-auto pb-5">
@@ -59,7 +74,9 @@ export default function AdminStudentDataDetails() {
               ></Button>
             </div>
             <div className="ml-auto flex">
-              <ButtonWithText onClick={() => approveReject("delete")}></ButtonWithText>
+              <ButtonWithText
+                onClick={() => approveReject("delete")}
+              ></ButtonWithText>
               <Link to="/admin-student-data">
                 <Button value="Back" variant="square-blue"></Button>
               </Link>
@@ -68,10 +85,11 @@ export default function AdminStudentDataDetails() {
           <AdminStudentDetailsForm></AdminStudentDetailsForm>
           <hr className="border-2 border-[#5398ff] mt-5" />
           <SquareDropdown
+            onChange={handleDayChange}
             label="Selected Courses"
             options={["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]}
           ></SquareDropdown>
-          <Table canChoose={false}></Table>
+          <Table nisn={nisn!} selectedDay={selectedDayNumber} canChoose={false}></Table>
         </div>
       </div>
 

@@ -11,7 +11,7 @@ export async function apiRequest<T>({
   endpoint,
   param,
 }: ApiRequestOptions): Promise<T> {
-  const path = "https://localhost:44364/api";
+  const path = "https://localhost:44364/api"; //IIS EXPRESS dotnet C#
 
   const config: RequestInit = {
     method,

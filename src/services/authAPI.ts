@@ -4,7 +4,6 @@ export interface LoginReqDto {
   email: string;
   password: string;
 }
-
 export function auth_login(param: LoginReqDto) {
   return apiRequest<any>({ method: "POST", endpoint: "/User/login", param });
 }
@@ -23,7 +22,6 @@ export interface RegisterReqDto {
   email: string;
   password: string;
 }
-
 export function auth_register(param: RegisterReqDto) {
   return apiRequest<any>({ method: "POST", endpoint: "/User/register", param });
 }

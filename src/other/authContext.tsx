@@ -8,6 +8,7 @@ interface LoginInfo {
   role: string;
   nisn: string;
   imagePath: string;
+  grade: number;
 }
 
 interface AuthContextType {

@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useAuth } from "@/other/authContext";
+import { useState, useEffect } from "react";
 
 export default function Sidebar({
   isOpen,
@@ -9,12 +10,23 @@ export default function Sidebar({
   isOpen: boolean;
   onClose: () => void;
 }) {
-   const { loginInfo, logout } = useAuth();
+  const { loginInfo, logout } = useAuth();
 
   const imagePath = loginInfo?.imagePath ?? null;
   const name = loginInfo?.fullname ?? null;
-  const role = loginInfo?.role ?? null;;
-  const keAdmin = role === "Admin";
+
+  const [userRole, setUserRole] = useState<{
+    userId: number;
+    role: string;
+  } | null>(null);
+  const keAdmin = userRole?.role === "Admin";
+
+  useEffect(() => {
+    const stored = localStorage.getItem("userRole");
+    if (stored) {
+      setUserRole(JSON.parse(stored));
+    }
+  }, []);
 
   return (
     <>
@@ -141,8 +153,9 @@ export default function Sidebar({
               }`
             }
             onClick={() => {
-                    logout();
-                  }}
+              logout();
+              localStorage.removeItem("userRole");
+            }}
           >
             <Icon
               icon="material-symbols:logout-rounded"

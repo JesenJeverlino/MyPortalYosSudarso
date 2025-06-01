@@ -1,7 +1,5 @@
 import { apiRequest } from "./api-setup";
 
-// USERS & STUDENT DATA
-
 export function userStudentData_getAllPendingStudents() {
   return apiRequest<any>({
     method: "GET",
@@ -57,6 +55,27 @@ export function userStudentData_editAdminLogin(param: AdminEditReqDto) {
   });
 }
 
+export interface editGeneralParamDto {
+  fullname: string;
+  dateofBirth: string;
+  phoneNumber: string;
+  religion: number; //enum
+  address: string;
+  parentsName: string;
+  parentsPhoneNumber: string;
+}
+export function userStudentData_editStudentGeneral(
+  param: editGeneralParamDto,
+  nisn: string
+) {
+  return apiRequest<any>({
+    method: "PUT",
+    endpoint: `/StudentData/edit-general/${nisn}`,
+    param,
+  });
+}
+
+//edit login api gabisa pakai apiRequest(); krn kirim files ke backend caranya beda dgn biasanya
 export interface editLoginParamDto {
   email: string;
   password: string;
@@ -87,24 +106,4 @@ export async function userStudentData_editStudentLogin(
   }
 
   return response.json();
-}
-
-export interface editGeneralParamDto {
-  fullname: string;
-  dateofBirth: string;
-  phoneNumber: string;
-  religion: number; //enum
-  address: string;
-  parentsName: string;
-  parentsPhoneNumber: string;
-}
-export function userStudentData_editStudentGeneral(
-  param: editGeneralParamDto,
-  nisn: string
-) {
-  return apiRequest<any>({
-    method: "PUT",
-    endpoint: `/StudentData/edit-general/${nisn}`,
-    param,
-  });
 }

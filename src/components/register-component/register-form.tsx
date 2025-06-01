@@ -13,6 +13,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 export default function RegisterForm() {
   const methods = useForm<RegisterReqDto>();
   const { handleSubmit } = methods;
+
+  
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 

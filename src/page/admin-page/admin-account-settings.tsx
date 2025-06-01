@@ -41,12 +41,10 @@ export default function AdminAccountSettings() {
     try {
       const res = await userStudentData_editAdminLogin(data);
       toast.success(res.message || "success!");
-      console.log(loginInfo);
       login({
         ...loginInfo!,
         ...data, // hanya update fullname, email, password
       });
-      console.log(loginInfo);
       methods.reset(data);
     } catch (err: any) {
       if (loginInfo) {
