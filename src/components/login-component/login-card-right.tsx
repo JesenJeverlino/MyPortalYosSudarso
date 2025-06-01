@@ -25,11 +25,17 @@ export default function LoginCardRight() {
     try {
       const res = await auth_login({ email, password });
       login(res.data);
-      const userRole = {
+      const userDataLocal = {
         userId: res.data.userId,
         role: res.data.role,
+        nisn: res.data.nisn,
+
+        //for admin
+        fullname: res.data.fullname,
+        password: res.data.password,
+        email: res.data.email,
       };
-      localStorage.setItem("userRole", JSON.stringify(userRole));
+      localStorage.setItem("userDataLocal", JSON.stringify(userDataLocal));
       toast.success(res.message || "Login successful!", {
         onClose: () => {
           if (res.data.role === "Admin") {
@@ -88,6 +94,7 @@ export default function LoginCardRight() {
             type="submit"
             value="LOGIN"
           />
+          <div className="md:mb-0 mb-5"></div>
         </form>
       </div>
 

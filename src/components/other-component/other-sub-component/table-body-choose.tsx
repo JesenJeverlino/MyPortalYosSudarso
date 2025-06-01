@@ -228,7 +228,11 @@ export default function TableBodyChoose({
           <table className="w-full relative">
             <TableHead values={["No", "Time", ...uniqueClassrooms]}></TableHead>
             <tbody className="text-center font-medium">
-              <hr className="border border-[#5398ff] w-[100%] absolute left-1/2 -translate-x-1/2 top-8" />
+              <tr>
+                <td>
+                  <hr className="border border-[#5398ff] w-[100%] absolute left-1/2 -translate-x-1/2 top-8" />
+                </td>
+              </tr>
               {uniqueTimes.map((timeSlot, rowIndex) => (
                 <tr key={rowIndex}>
                   <td className="pt-5 pb-5">{rowIndex + 1}</td>

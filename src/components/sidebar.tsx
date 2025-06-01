@@ -22,7 +22,7 @@ export default function Sidebar({
   const keAdmin = userRole?.role === "Admin";
 
   useEffect(() => {
-    const stored = localStorage.getItem("userRole");
+    const stored = localStorage.getItem("userDataLocal");
     if (stored) {
       setUserRole(JSON.parse(stored));
     }
@@ -31,7 +31,7 @@ export default function Sidebar({
   return (
     <>
       <aside
-        className={`w-68 bg-[#1952a6] text-white flex flex-col p-2
+        className={`overflow-y-auto w-68 bg-[#1952a6] text-white flex flex-col p-2
         fixed h-screen z-50 top-0 left-0
         transform transition-transform duration-300 ease-in-out
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
@@ -154,7 +154,6 @@ export default function Sidebar({
             }
             onClick={() => {
               logout();
-              localStorage.removeItem("userRole");
             }}
           >
             <Icon

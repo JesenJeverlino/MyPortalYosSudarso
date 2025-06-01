@@ -14,6 +14,17 @@ import { useAuth } from "@/other/authContext";
 
 export default function AdminAccountSettings() {
   const { loginInfo, login } = useAuth();
+
+  if (!loginInfo) {
+    return (
+      <>
+        <div className="fixed inset-0 z-50 bg-black/30 flex justify-center items-center">
+          <ClipLoader color="#fff" size={50} />
+        </div>
+      </>
+    );
+  }
+
   const [loading, setLoading] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const methods = useForm({
@@ -41,11 +52,14 @@ export default function AdminAccountSettings() {
     try {
       const res = await userStudentData_editAdminLogin(data);
       toast.success(res.message || "success!");
-      login({
-        ...loginInfo!,
-        ...data, // hanya update fullname, email, password
-      });
       methods.reset(data);
+
+      const updatedInfo = {
+        ...loginInfo!,
+        ...data, // update fullname, email, password
+      };
+      login(updatedInfo); // update context
+      localStorage.setItem("userDataLocal", JSON.stringify(updatedInfo)); // update localStorage
     } catch (err: any) {
       if (loginInfo) {
         const newAdminData = {

@@ -22,7 +22,7 @@ export default function StudentDataGeneralForm({
   setLoading,
   isLoading,
 }: FormProps) {
-  const { loginInfo, login } = useAuth(); // pakai context
+  const { loginInfo, login, loading: authLoading } = useAuth();
   const nisn = loginInfo?.nisn;
 
   const [studentDetails, setStudentDetails] = useState<StudentDetails>();
@@ -39,8 +39,10 @@ export default function StudentDataGeneralForm({
   }
 
   useEffect(() => {
-    fetchStudentDetails();
-  }, []);
+    if (!authLoading && nisn) {
+      fetchStudentDetails();
+    }
+  }, [authLoading, nisn]);
 
   const [isEdit2, setIsedit2] = useState(false);
   const methods = useForm({

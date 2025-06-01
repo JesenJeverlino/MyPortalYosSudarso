@@ -1,4 +1,6 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode } from "react";
+import { useEffect } from "react";
+import { userStudentData_getStudentDetails } from "@/services/userStudentDataAPI";
 
 interface LoginInfo {
   userId: number;
@@ -15,29 +17,73 @@ interface AuthContextType {
   loginInfo: LoginInfo | null;
   login: (data: LoginInfo) => void;
   logout: () => void;
+  loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-
 
 interface AuthProviderProps {
   children: ReactNode;
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-const [loginInfo, setLoginInfo] = useState<LoginInfo | null>(null);
+  const [loginInfo, setLoginInfo] = useState<LoginInfo | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const login = (data:LoginInfo) => {
+  const login = (data: LoginInfo) => {
     setLoginInfo(data);
   };
 
   const logout = () => {
     setLoginInfo(null);
+    localStorage.removeItem("userDataLocal");
   };
 
+  // Restore data saat refresh
+  useEffect(() => {
+    const stored = localStorage.getItem("userDataLocal");
+    if (!loginInfo && stored) {
+      const { nisn, role, userId, fullname, password, email } = JSON.parse(stored);
+
+      if (role === "Student") {
+        userStudentData_getStudentDetails(nisn)
+          .then((data) => {
+            setLoginInfo({
+              userId: data.userId,
+              email: data.email,
+              fullname: data.fullname,
+              password: data.password,
+              role: "Student",
+              nisn: data.nisn,
+              imagePath: data.imagePath,
+              grade: data.grade,
+            });
+          })
+          .catch((err) => {
+            console.error("Gagal mengambil data student:", err);
+            localStorage.removeItem("userRole");
+          });
+      }
+
+      if (role === "Admin") {
+        setLoginInfo({
+          userId,
+          role,
+          fullname,
+          password,
+          email, 
+          nisn: "",
+          imagePath: "",
+          grade: 0,
+        });
+      }
+
+      setLoading(false);
+    }
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ loginInfo, login, logout }}>
+    <AuthContext.Provider value={{ loginInfo, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );
@@ -45,8 +91,8 @@ const [loginInfo, setLoginInfo] = useState<LoginInfo | null>(null);
 
 export function useAuth() {
   const context = useContext(AuthContext);
-    if (context === undefined) {
-      throw new Error('useAuth must be used within an AuthProvider');
-    }
-    return context;
+  if (context === undefined) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
 }

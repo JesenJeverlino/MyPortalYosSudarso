@@ -3,6 +3,7 @@ import ChooseDay from "@/components/other-component/choose-day";
 import Table from "@/components/other-component/table";
 import { useState } from "react";
 import { useAuth } from "@/other/authContext";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function UserClassAndSchedule() {
   const adaGak = true;
@@ -13,6 +14,16 @@ export default function UserClassAndSchedule() {
   };
 
   const { loginInfo } = useAuth();
+
+  if (!loginInfo) {
+    return (
+      <>
+        <div className="fixed inset-0 z-50 bg-black/30 flex justify-center items-center">
+          <ClipLoader color="#fff" size={50} />
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

@@ -21,8 +21,7 @@ export default function StudentDataAuthForm({
   setLoading,
   isLoading,
 }: FormProps) {
-
-  const { loginInfo, login } = useAuth();
+  const { loginInfo, login, loading: authLoading } = useAuth();
   const nisn = loginInfo?.nisn;
   const [previewImg, setPreviewImg] = useState("/default.jpg");
   const [studentDetails, setStudentDetails] = useState<StudentDetails>();
@@ -46,8 +45,10 @@ export default function StudentDataAuthForm({
   }
 
   useEffect(() => {
-    fetchStudentDetails();
-  }, []);
+    if (!authLoading && nisn) {
+      fetchStudentDetails();
+    }
+  }, [authLoading, nisn]);
 
   const [isEdit, setIsEdit] = useState(false);
   const methods = useForm<editLoginParamDto>({
