@@ -1,10 +1,9 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import Sidebar from "@/components/sidebar";
 
 export default function BasicLayout() {
-
   const [sidebarOpen, setSidebarOpen] = useState(() => {
     if (typeof window !== "undefined") {
       return window.innerWidth >= 1024;
@@ -29,14 +28,16 @@ export default function BasicLayout() {
   return (
     <>
       <div className="flex">
-
         <button
           onClick={() => setSidebarOpen(true)}
-          className={`bg-[#1952a6] border-2 fixed top-4 left-4 z-50 p-2 rounded lg:hidden transition-opacity duration-300 ${sidebarOpen ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+          className={`bg-[#1952a6] border-2 fixed top-4 left-4 z-50 p-2 rounded lg:hidden transition-opacity duration-300 ${
+            sidebarOpen ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+        >
           <Icon icon="material-symbols:menu" className="w-6 h-6 text-white" />
         </button>
 
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
         {/* Main content */}
         <main className="flex-1 min-h-screen bg-[#1952a6] overflow-auto">
@@ -44,7 +45,6 @@ export default function BasicLayout() {
             <Outlet />
           </div>
         </main>
-        
       </div>
     </>
   );

@@ -1,7 +1,6 @@
 import TableHead from "@/components/other-component/other-sub-component/table-head";
 import TableBody from "@/components/other-component/other-sub-component/table-body";
 import TableBodyChoose from "@/components/other-component/other-sub-component/table-body-choose";
-import Button from "./button";
 
 export default function Table({
   canChoose,

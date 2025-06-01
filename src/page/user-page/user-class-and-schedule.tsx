@@ -12,8 +12,7 @@ export default function UserClassAndSchedule() {
     setSelectedDay(day);
   };
 
-    const { loginInfo } = useAuth();
-  
+  const { loginInfo } = useAuth();
 
   return (
     <>
@@ -27,7 +26,11 @@ export default function UserClassAndSchedule() {
           <h1 className="text-[#1952a6] font-bold text-[1.4rem] mb-3">
             Monday's Schedule
           </h1>
-          <Table nisn={loginInfo!.nisn} selectedDay={selectedDay} canChoose={false}></Table>
+          <Table
+            nisn={loginInfo!.nisn}
+            selectedDay={selectedDay}
+            canChoose={false}
+          ></Table>
         </div>
       ) : (
         <h1 className="text-center mt-50 mb-50 text-[#1952a6] font-bold">

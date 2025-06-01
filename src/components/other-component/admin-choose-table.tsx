@@ -145,11 +145,8 @@ export default function AdminChooseTable({
     }
   };
 
-  // untuk dropdown
-  // const subjectOptions = ["Mathematics", "Physics", "Chemistry", "Biology"];
-
   //bagina untuk tampilin siapa2 aja yang enroll kelas tersebut!
-  const subjectOptions = filteredSubjects.map((subj) => subj.subjectName);
+  // const subjectOptions = filteredSubjects.map((subj) => subj.subjectName);
   const timeOptions = schedules.map((s) => ({
     label: `${s.startTime.slice(0, 5)} - ${s.endTime.slice(0, 5)}`,
     value: s.scheduleId.toString(),

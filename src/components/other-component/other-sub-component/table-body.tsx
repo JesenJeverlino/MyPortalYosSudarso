@@ -21,7 +21,6 @@ type Schedule = {
 
 type StudentSchedule = {
   scheduleId: number;
-  // properti lain kalau ada
 };
 
 export default function TableBody({ selectedDay, nisn }: propsType) {

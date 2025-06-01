@@ -3,7 +3,6 @@ import { Icon } from "@iconify/react";
 import SquareDropdown from "@/components/other-component/square-dropdown";
 import Button from "@/components/other-component/button";
 import ButtonWithText from "@/components/other-component/button-with-text";
-import TableHead from "@/components/other-component/other-sub-component/table-head";
 import AdminChooseTable from "@/components/other-component/admin-choose-table";
 import { useLocation } from "react-router-dom";
 import { classroom_getAllClassroomDetails } from "@/services/classroomAPI";

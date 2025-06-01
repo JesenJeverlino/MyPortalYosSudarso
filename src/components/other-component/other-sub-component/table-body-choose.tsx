@@ -240,8 +240,6 @@ export default function TableBodyChoose({
                         s.startTime === timeSlot.startTime &&
                         s.endTime === timeSlot.endTime
                     );
-                    const isSelected =
-                      activeIndices[rowIndex] === classroomIndex;
                     const displayJoinedCount =
                       scheduleForCell?.joinedCount ?? 0;
 

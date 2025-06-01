@@ -1,8 +1,6 @@
-import { Icon } from "@iconify/react";
 import UserHeader from "@/components/user-header";
 import ChooseDay from "@/components/other-component/choose-day";
 import Table from "@/components/other-component/table";
-import Button from "@/components/other-component/button";
 import { useSelection } from "@/other/allowKrsSubmitContext";
 import { useState } from "react";
 import { useAuth } from "@/other/authContext";
@@ -34,7 +32,7 @@ export default function StudyPlan() {
             <h1 className="text-[#1952a6] font-bold text-[1.4rem] mb-3">
               Your Monday Subjects Selection
             </h1>
-            <Table selectedDay={selectedDay} canChoose={true}></Table>
+            <Table nisn={""} selectedDay={selectedDay} canChoose={true}></Table>
           </div>
         </>
       ) : (
