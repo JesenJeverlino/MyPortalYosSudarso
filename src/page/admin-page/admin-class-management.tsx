@@ -40,11 +40,14 @@ export default function AdminClassManagement() {
 
   useEffect(() => {
     async function fetchStatus() {
+      setLoading(true);
       try {
         const res = await krsControl_getStatus();
         setIsSelectionEnabled(res.isEnabled);
       } catch (err) {
         console.error("Failed to fetch status:", err);
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -82,11 +85,14 @@ export default function AdminClassManagement() {
     (subject) => subject.forGrade === activeGrade
   );
   async function fetchSubjects() {
+    setLoading(true);
     try {
       const data = await subject_getAllSubjects();
       setSubjects(data);
     } catch (error) {
       setSubjects([]);
+    } finally{
+      setLoading(false);
     }
   }
 
@@ -144,11 +150,14 @@ export default function AdminClassManagement() {
     (classroom) => classroom.forGrade === activeGrade
   );
   async function fetchClassrooms() {
+    setLoading(true);
     try {
       const data = await classroom_getAllClassroom();
       setClassrooms(data);
     } catch (error) {
       setClassrooms([]);
+    } finally {
+      setLoading(false);
     }
   }
 

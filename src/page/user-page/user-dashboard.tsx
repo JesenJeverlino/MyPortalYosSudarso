@@ -3,22 +3,28 @@ import DashboardSFeature from "@/components/dashboard-component/dashboard-featur
 import DashboardQuickAcc from "@/components/dashboard-component/dashboard-quick-acc";
 import DashboardContact from "@/components/dashboard-component/dashboard-contact";
 import { studentSchedules_autoAssign } from "@/services/studentSchedulesAPI";
-import { useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 import { useAuth } from "@/other/authContext";
+import ClipLoader from "react-spinners/ClipLoader";
+import { useState } from "react";
 
 export default function UserDashboard() {
   const { loginInfo } = useAuth();
   const hasRun = useRef(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (hasRun.current) return;
     hasRun.current = true;
 
     async function assignIfNeeded() {
+      setLoading(true);
       try {
         await studentSchedules_autoAssign(loginInfo!.nisn);
       } catch (err: any) {
         console.log(err.message);
+      } finally {
+        setLoading(false);
       }
     }
     assignIfNeeded();
@@ -56,6 +62,12 @@ export default function UserDashboard() {
           <DashboardContact></DashboardContact>
         </div>
       </div>
+
+      {loading && (
+        <div className="fixed inset-0 z-50 bg-black/30 flex justify-center items-center">
+          <ClipLoader color="#fff" size={50} />
+        </div>
+      )}
     </>
   );
 }

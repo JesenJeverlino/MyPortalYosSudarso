@@ -9,6 +9,7 @@ import { useEffect } from "react";
 
 export default function StudyPlan() {
   const { loginInfo } = useAuth();
+  const [loading, setLoading] = useState(false);
 
   if (!loginInfo) {
     return (
@@ -27,15 +28,20 @@ export default function StudyPlan() {
     setSelectedDay(day);
   };
 
-  const [isSelectionEnabled, setIsSelectionEnabled] = useState<boolean | null>();
+  const [isSelectionEnabled, setIsSelectionEnabled] = useState<
+    boolean | null
+  >();
 
   useEffect(() => {
     async function getStatus() {
+      setLoading(true);
       try {
         const status = await krsControl_getStatus();
         setIsSelectionEnabled(status.isEnabled);
       } catch (error) {
         console.error("Failed to fetch status:", error);
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -67,6 +73,12 @@ export default function StudyPlan() {
           "Course selection is for 11th and 12th graders only. Sit tight—your
           time to choose will come soon!"
         </h1>
+      )}
+
+      {loading && (
+        <div className="fixed inset-0 z-50 bg-black/30 flex justify-center items-center">
+          <ClipLoader color="#fff" size={50} />
+        </div>
       )}
     </>
   );

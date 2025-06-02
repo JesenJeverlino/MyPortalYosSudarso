@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/other/authContext";
 import { studentSchedules_getStudentSchedulesByNISN } from "@/services/studentSchedulesAPI";
 import { schedule_getAllSchedule } from "@/services/scheduleAPI";
+import ClipLoader from "react-spinners/ClipLoader";
 
 type propsType = {
   selectedDay: number;
@@ -26,11 +27,12 @@ type StudentSchedule = {
 export default function TableBody({ selectedDay, nisn }: propsType) {
   const { loginInfo } = useAuth();
   const [values, setValues] = useState<string[][]>([]);
+  const [loading23, setLoading23] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       if (!loginInfo) return;
-
+      setLoading23(true);
       try {
         // 1. Dapatkan jadwal siswa berdasarkan nisn
         const studentSchedules: StudentSchedule[] =
@@ -67,6 +69,8 @@ export default function TableBody({ selectedDay, nisn }: propsType) {
       } catch (error) {
         console.error("Error fetching schedules", error);
         setValues([]);
+      } finally{
+        setLoading23(false);
       }
     }
 
@@ -106,6 +110,12 @@ export default function TableBody({ selectedDay, nisn }: propsType) {
           ))
         )}
       </tbody>
+
+      {loading23 && (
+        <div className="fixed inset-0 z-50 bg-black/30 flex justify-center items-center">
+          <ClipLoader color="#fff" size={50} />
+        </div>
+      )}
     </>
   );
 }

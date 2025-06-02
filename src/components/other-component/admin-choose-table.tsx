@@ -70,11 +70,14 @@ export default function AdminChooseTable({
   );
 
   async function fetchSubjects() {
+    setParentLoading(true);
     try {
       const data = await subject_getAllSubjects();
       setSubjects(data);
     } catch (error) {
       setSubjects([]);
+    } finally{
+      setParentLoading(false);
     }
   }
 
@@ -93,6 +96,7 @@ export default function AdminChooseTable({
   const [schedules, setSchedules] = useState<Schedule[]>([]);
 
   async function fetchSchedules() {
+    setParentLoading(true);
     try {
       const data = await schedule_getAllScheduleByClassroomId(classroomId);
       const filteredData = data.filter(
@@ -114,6 +118,8 @@ export default function AdminChooseTable({
     } catch (error) {
       setSchedules([]);
       setIsEdit(false);
+    } finally {
+      setParentLoading(false);
     }
   }
 
@@ -169,6 +175,7 @@ export default function AdminChooseTable({
     if (!selectedScheduleId) return;
 
     const fetchEnrolledStudents = async () => {
+      setParentLoading(true);
       try {
         // 1. Dapatkan daftar siswa yang terdaftar di jadwal ini
         const studentSchedules =
@@ -186,6 +193,8 @@ export default function AdminChooseTable({
       } catch (error) {
         // toast.error("Failed to fetch enrolled students.");
         setEnrolledStudents([]);
+      } finally {
+        setParentLoading(false);
       }
     };
 
