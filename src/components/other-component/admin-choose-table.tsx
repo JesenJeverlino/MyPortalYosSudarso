@@ -184,7 +184,7 @@ export default function AdminChooseTable({
 
         setEnrolledStudents(studentDetails);
       } catch (error) {
-        toast.error("Failed to fetch enrolled students.");
+        // toast.error("Failed to fetch enrolled students.");
         setEnrolledStudents([]);
       }
     };
