@@ -7,7 +7,11 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { StudentDetails, StudentDataReligion, StudentDataGender } from "@/other/IStudentDetails";
+import {
+  StudentDetails,
+  StudentDataReligion,
+  StudentDataGender,
+} from "@/other/IStudentDetails";
 
 export default function AdminStudentDetailsForm() {
   const location = useLocation();
@@ -20,6 +24,7 @@ export default function AdminStudentDetailsForm() {
 
   useEffect(() => {
     async function fetchPendingStudents() {
+      setLoading(true);
       try {
         const data = await userStudentData_getStudentDetails(nisn!);
         setStudentDetails(data);
@@ -39,11 +44,11 @@ export default function AdminStudentDetailsForm() {
   }, []);
 
   const gradeMap: Record<number, string> = {
-  1: "10",
-  2: "11",
-  3: "12",
-  4: "Graduate",
-};
+    1: "10",
+    2: "11",
+    3: "12",
+    4: "Graduate",
+  };
 
   return (
     <>
@@ -144,13 +149,20 @@ export default function AdminStudentDetailsForm() {
             </h1>
             <label htmlFor="profile-picture">
               <img
-          src={
-            studentDetails?.imagePath ? `https://localhost:44364/${studentDetails?.imagePath}` : "/default.jpg"
-          }
+                src={
+                  studentDetails?.imagePath
+                    ? `https://localhost:44364/${studentDetails?.imagePath}`
+                    : "/default.jpg"
+                }
                 className="xl:w-[50%] w-[75%] h-auto rounded-full mb-3 mx-auto"
               />
             </label>
-            <input type="file" id="profile-picture" className="hidden" disabled={true}/>
+            <input
+              type="file"
+              id="profile-picture"
+              className="hidden"
+              disabled={true}
+            />
           </div>
         </div>
       )}

@@ -28,6 +28,7 @@ export default function StudentDataGeneralForm({
   const [studentDetails, setStudentDetails] = useState<StudentDetails>();
 
   async function fetchStudentDetails() {
+    setLoading(true);
     try {
       const data = await userStudentData_getStudentDetails(nisn!);
       setStudentDetails(data);
