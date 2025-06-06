@@ -72,7 +72,6 @@ export default function AdminStudentData() {
                 fullname={student.fullname}
                 nisn={student.nisn}
                 imagePath={student.imagePath}
-                userId={student.userId}
                 navigateTo="/admin-student-data-details"
               ></StudentCard>
             ))}

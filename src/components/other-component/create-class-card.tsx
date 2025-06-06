@@ -83,7 +83,7 @@ export default function CreateClassCard({
       ) : (
         <>
           <button
-            onClick={(e) => {
+            onClick={() => {
               setIsModalOpen(true);
             }}
             className="bg-[#d9d9d9] text-black font-bold flex items-center justify-center md:w-[42%] w-[100%] h-[160px] cursor-pointer hover:opacity-50"

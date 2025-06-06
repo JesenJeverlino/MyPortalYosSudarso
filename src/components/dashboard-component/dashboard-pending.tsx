@@ -48,7 +48,6 @@ export default function AdminDashboardTwo({
               fullname={student.fullname}
               nisn={student.nisn}
               imagePath={student.imagePath}
-              userId={student.userId}
               navigateTo="/admin-dashboard-pending-details"
             ></StudentCard>
           ))}

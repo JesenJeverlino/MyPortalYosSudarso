@@ -5,7 +5,6 @@ type StudentCardProps = {
   fullname: string;
   nisn: string;
   imagePath: string;
-  userId: string;
   navigateTo: string;
 };
 
@@ -13,13 +12,9 @@ export default function StudentCard({
   fullname,
   nisn,
   imagePath,
-  userId, //simpan aja
   navigateTo,
 }: StudentCardProps) {
 
-
-  let x = userId //trada guna
-  x = "cc";
 
   return (
     <>
