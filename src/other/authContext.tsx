@@ -28,7 +28,7 @@ interface AuthProviderProps {
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [loginInfo, setLoginInfo] = useState<LoginInfo | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const login = (data: LoginInfo) => {
     setLoginInfo(data);
@@ -39,48 +39,55 @@ export function AuthProvider({ children }: AuthProviderProps) {
     localStorage.removeItem("userDataLocal");
   };
 
-  // Restore data saat refresh
-  useEffect(() => {
+useEffect(() => {
+  const restoreLoginInfo = async () => {
+    setLoading(true);
     const stored = localStorage.getItem("userDataLocal");
     if (!loginInfo && stored) {
       const { nisn, role, userId, fullname, password, email } = JSON.parse(stored);
 
       if (role === "Student") {
-        userStudentData_getStudentDetails(nisn)
-          .then((data) => {
-            setLoginInfo({
-              userId: data.userId,
-              email: data.email,
-              fullname: data.fullname,
-              password: data.password,
-              role: "Student",
-              nisn: data.nisn,
-              imagePath: data.imagePath,
-              grade: data.grade,
-            });
-          })
-          .catch((err) => {
-            console.error("Gagal mengambil data student:", err);
-            localStorage.removeItem("userRole");
+        try {
+          const data = await userStudentData_getStudentDetails(nisn);
+          setLoginInfo({
+            userId: data.userId,
+            email: data.email,
+            fullname: data.fullname,
+            password: data.password,
+            role: "Student",
+            nisn: data.nisn,
+            imagePath: data.imagePath,
+            grade: data.grade,
           });
-      }
-
-      if (role === "Admin") {
+        } catch (err) {
+          console.error("Gagal mengambil data student:", err);
+          localStorage.removeItem("userRole");
+        } finally {
+          setLoading(false);
+        }
+      } else if (role === "Admin") {
         setLoginInfo({
           userId,
           role,
           fullname,
           password,
-          email, 
+          email,
           nisn: "",
           imagePath: "",
           grade: 0,
         });
+        setLoading(false);
+      } else {
+        setLoading(false);
       }
-
+    } else {
       setLoading(false);
     }
-  }, []);
+  };
+
+  restoreLoginInfo();
+}, []);
+
 
   return (
     <AuthContext.Provider value={{ loginInfo, login, logout, loading }}>

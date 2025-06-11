@@ -32,8 +32,8 @@ import AdminClassDetails from "./page/admin-page/admin-sub-pages/admin-class-det
 export default function App() {
   return (
     <>
-      <Router>
-        <AuthProvider>
+     <AuthProvider>
+        <Router>
           <ScrollToTop />
             <Routes>
 
@@ -63,8 +63,8 @@ export default function App() {
               </Route>
               
             </Routes>
-        </AuthProvider>
-      </Router>
+        </Router>
+      </AuthProvider>
     </>
   );
 }
