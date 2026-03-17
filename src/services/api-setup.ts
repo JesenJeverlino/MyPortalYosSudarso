@@ -11,7 +11,9 @@ export async function apiRequest<T>({
   endpoint,
   param,
 }: ApiRequestOptions): Promise<T> {
-  const path = "https://localhost:44364/api"; //IIS EXPRESS dotnet C#
+  
+  // const path = "https://localhost:44364/api"; // Visual Studio
+  const path = "http://localhost:5075/api" // Jetbrains Rider
 
   const config: RequestInit = {
     method,
